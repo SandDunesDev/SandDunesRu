@@ -1,23 +1,16 @@
 import React, { useState } from "react";
+import "./EmailInput.css";
 
 export default function EmailInput({ selectedImageA, selectedImageB, onSuccess }) {
   const [email, setEmail] = useState("");
+  const [isFocused, setIsFocused] = useState(false);
 
   const handleSubmit = async () => {
     if (!email) return;
 
     try {
-      // Simulate backend call
       console.log("Sending to backend:", { email, selectedImageA, selectedImageB });
-
-      // Example POST to backend:
-      // await fetch("/api/send-email", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify({ email, selectedImageA, selectedImageB })
-      // });
-
-      onSuccess();  // trigger popup
+      onSuccess();
     } catch (err) {
       alert("Failed to send. Try again.");
     }
@@ -36,9 +29,11 @@ export default function EmailInput({ selectedImageA, selectedImageB, onSuccess }
     }}>
       <input
         type="email"
-        placeholder="email"
+        placeholder={isFocused ? "" : "email"}
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
         style={{
           flex: 1,
           background: "transparent",
@@ -48,25 +43,14 @@ export default function EmailInput({ selectedImageA, selectedImageB, onSuccess }
           outline: "none",
           fontFamily: "Inter, sans-serif",
           fontWeight: "Regular",
-          color: "#999999",
+          color: isFocused ? "#ffffff" : "#999999",
         }}
       />
       <div style={{ width: "2px", backgroundColor: "#fff", height: "70%" }} />
-      <button
-        onClick={handleSubmit}
-        style={{
-          background: "transparent",
-          border: "none",
-          padding: "0 16px",
-          cursor: "pointer",
-          fontSize: "16px",
-          fontFamily: "Inter, sans-serif",
-          fontWeight: "bold",
-          color: "#fff",
-        }}
-      >
-        S*nd
+      <button className="send-button" onClick={handleSubmit}>
+        <span className="send-icon" />
       </button>
+
     </div>
   );
 }

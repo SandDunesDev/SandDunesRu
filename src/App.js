@@ -4,7 +4,6 @@ import "./PopUp.css";
 import ImageSwitcherController from "./ImageSwitcherController";
 import RunningLine from "./RunningLine";
 import EmailInput from "./EmailInput";
-import cursor from "./cursor.png";
 
 function App() {
   const [selectedImageA, setSelectedImageA] = useState("");
@@ -53,13 +52,13 @@ function App() {
           zIndex: 999,
         }}>
           <div className="popUpContainer">
-          We have sent you some DuNes!
-          Check your inbox
-            <div>
-              <button className="popUpButton" onClick={() => setShowPopup(false)} >
-                OK...
-              </button>
+            <div className="popUpText">
+              We have sent you some DuNes!
+              Check your inbox
             </div>
+          <button className="popUpButton" onClick={() => setShowPopup(false)} >
+          <span className="popUpButtonImage" />
+          </button>
           </div>
         </div>
       )}
