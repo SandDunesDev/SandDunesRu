@@ -4,6 +4,7 @@ import "./PopUp.css";
 import ImageSwitcherController from "./ImageSwitcherController";
 import RunningLine from "./RunningLine";
 import EmailInput from "./EmailInput";
+import cursor from "./cursor.png";
 
 function App() {
   const [selectedImageA, setSelectedImageA] = useState("");
