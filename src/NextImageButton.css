@@ -1,0 +1,23 @@
+.control-button {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  
+  .control-button:hover {
+    transform: rotate(15deg) scale(1.1);
+  }
+  
+  .control-button:active {
+    transform: scale(0.9);
+    opacity: 0.5;
+  }
+
+  .control-button-wrapper:hover .control-button {
+    transform: rotate(15deg) scale(1.1);
+  }
+  
+  .control-button-wrapper:active .control-button {
+    transform: scale(0.9);
+    opacity: 0.5;
+  }
