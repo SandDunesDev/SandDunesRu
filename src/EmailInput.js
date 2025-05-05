@@ -4,15 +4,33 @@ import "./EmailInput.css";
 export default function EmailInput({ selectedImageA, selectedImageB, onSuccess }) {
   const [email, setEmail] = useState("");
   const [isFocused, setIsFocused] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async () => {
     if (!email) return;
 
+    setLoading(true);
+
     try {
-      console.log("Sending to backend:", { email, selectedImageA, selectedImageB });
-      onSuccess();
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, selectedImageA, selectedImageB }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        onSuccess();
+      } else {
+        alert("Sending failed. Try again.");
+      }
     } catch (err) {
       alert("Failed to send. Try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -47,10 +65,9 @@ export default function EmailInput({ selectedImageA, selectedImageB, onSuccess }
         }}
       />
       <div style={{ width: "2px", backgroundColor: "#fff", height: "70%" }} />
-      <button className="send-button" onClick={handleSubmit}>
+      <button className="send-button" onClick={handleSubmit} disabled={loading}>
         <span className="send-icon" />
       </button>
-
     </div>
   );
 }
