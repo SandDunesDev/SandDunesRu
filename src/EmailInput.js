@@ -7,12 +7,12 @@ export default function EmailInput({ selectedImageA, selectedImageB, onSuccess }
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async () => {
-    if (!email) return;
+    if (!email || !selectedImageA || !selectedImageB) return;
 
     setLoading(true);
 
     try {
-      const response = await fetch("/api/send-email", {
+      const response = await fetch("/api/send-card", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -23,12 +23,14 @@ export default function EmailInput({ selectedImageA, selectedImageB, onSuccess }
       const result = await response.json();
 
       if (response.ok && result.success) {
+        setEmail("");
         onSuccess();
       } else {
         alert("Sending failed. Try again.");
       }
     } catch (err) {
       alert("Failed to send. Try again.");
+      console.error(err);
     } finally {
       setLoading(false);
     }
@@ -66,7 +68,7 @@ export default function EmailInput({ selectedImageA, selectedImageB, onSuccess }
       />
       <div style={{ width: "2px", backgroundColor: "#fff", height: "70%" }} />
       <button className="send-button" onClick={handleSubmit} disabled={loading}>
-        <span className="send-icon" />
+        <span className={`send-icon ${loading ? "loading" : ""}`} />
       </button>
     </div>
   );

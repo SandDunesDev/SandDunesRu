@@ -1,25 +1,28 @@
 .send-button {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-  }
-  
-  .send-icon {
-    width: 76px;
-    height: 48px;
-    background-image: url('../src/ButtonDefault.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    transition: background-image 0.2s ease;
-  }
-  
-  .send-button:hover .send-icon {
-    background-image: url('../src/ButtonHover.svg');
-  }
-  
-  .send-button:active .send-icon {
-    background-image: url('../src/ButtonClick.svg');
-  }
-  
+  background: transparent;
+  border: none;
+  cursor: url('../src/cursorhover.png'), pointer;
+  display: flex;
+  align-items: center;
+}
+
+.send-icon {
+  width: 76px;
+  height: 48px;
+  background-image: url('../src/ButtonDefault.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: background-image 0.2s ease;
+}
+
+.send-button:hover .send-icon {
+  background-image: url('../src/ButtonHover.svg');
+}
+
+.send-button:active .send-icon {
+  background-image: url('../src/ButtonClick.svg');
+}
+
+/*.send-icon.loading {
+  background-image: url('../src/ButtonLoading.svg');
+ } /* опционально — если хочешь спиннер */

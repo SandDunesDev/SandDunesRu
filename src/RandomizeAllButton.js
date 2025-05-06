@@ -15,7 +15,6 @@ export function RandomizeAllButton({ setIndexA, setIndexB }) {
             style={{
                 backgroundColor: "transparent",
                 border: "none",
-                cursor: "pointer",
                 position: "absolute",
                 top: 40,
                 left: "50%",

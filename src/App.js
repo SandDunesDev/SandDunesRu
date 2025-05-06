@@ -31,7 +31,7 @@ function App() {
         />
       </div>
 
-      <div style={{ position: "absolute", bottom: 40, left: "50%", transform: "translateX(-50%)", width: "40%", zIndex: 10 }}>
+      <div className="emailInputContainer">
         <EmailInput
           selectedImageA={selectedImageA}
           selectedImageB={selectedImageB}
