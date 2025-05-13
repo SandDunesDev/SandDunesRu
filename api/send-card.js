@@ -1,64 +1,93 @@
-import Jimp from 'jimp';
-import fetch from 'node-fetch';
+// /api/send-card.js
+// Vercel API route: handles POST requests to send a formatted email via UniSender
+
+/**
+ * Required environment variables:
+ *   - UNISENDER_API_KEY: Obtain from your UniSender account > API Keys (https://www.unisender.com/ru/account/api/)
+ *   - UNISENDER_SENDER_EMAIL: A verified sender email configured in UniSender
+ *   - SENDER_NAME: (optional) Display name for the sender
+ *
+ * UniSender API parameters used:
+ *   - api_key: Your API key
+ *   - email: Recipient email address
+ *   - sender_name: Sender name displayed
+ *   - sender_email: Sender email address
+ *   - subject: Email subject line
+ *   - body: HTML content of the email
+ *   - lang: Language code ('ru' or 'en')
+ *
+ * For a full list of available parameters (e.g., tags, tracking settings), see:
+ * https://www.unisender.com/ru/help/api/sendEmail/
+ */
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST') return res.status(405).end('Method Not Allowed');
-
-  const { email, selectedImageA, selectedImageB } = req.body;
-
-  if (!email || !selectedImageA || !selectedImageB) {
-    return res.status(400).json({ error: 'Missing data' });
+  if (req.method !== 'POST') {
+    res.setHeader('Allow', 'POST');
+    return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  try {
-    // Decode base64 images
-    const imageA = await Jimp.read(Buffer.from(selectedImageA.split(',')[1], 'base64'));
-    const imageB = await Jimp.read(Buffer.from(selectedImageB.split(',')[1], 'base64'));
+  const { email, selectedImageA, selectedImageB } = req.body;
+  if (!email || !selectedImageA || !selectedImageB) {
+    return res.status(400).json({ error: 'Request body must include `email`, `selectedImageA`, and `selectedImageB`.' });
+  }
 
-    // Resize to same height if needed
-    const height = Math.max(imageA.getHeight(), imageB.getHeight());
-    imageA.resize(Jimp.AUTO, height);
-    imageB.resize(Jimp.AUTO, height);
+  const apiKey = process.env.UNISENDER_API_KEY;
+  const senderEmail = process.env.UNISENDER_SENDER_EMAIL;
+  const senderName = process.env.SENDER_NAME || 'No-Reply';
 
-    // Combine images side-by-side
-    const combined = new Jimp(imageA.getWidth() + imageB.getWidth(), height);
-    combined.composite(imageA, 0, 0).composite(imageB, imageA.getWidth(), 0);
+  // Validate essential configuration
+  if (!apiKey || !senderEmail) {
+    console.error('Missing UNISENDER_API_KEY or UNISENDER_SENDER_EMAIL environment variable.');
+    return res.status(500).json({ error: 'Server configuration error: missing API key or sender email.' });
+  }
 
-    // Get base64
-    const combinedBase64 = await combined.getBase64Async(Jimp.MIME_JPEG);
+  const imageA = selectedImageA;
+  const imageB = selectedImageB;
+  const subject = 'Ваша открытка от нас';
+  const apiUrl = 'https://api.unisender.com/ru/api/sendEmail?format=json';
 
-    // Email HTML with embedded base64 image
-    const htmlBody = `
-      <div style="text-align:center;font-family:Inter,sans-serif;">
-        <h2>Ваша открытка!</h2>
-        <img src="${combinedBase64}" alt="Postcard" style="max-width:100%;" />
+  // Build HTML body with two images
+  const htmlBody = `
+    <div style="font-family: Arial, sans-serif; text-align: center;">
+      <h2>Ваша открытка</h2>
+      <div style="margin-bottom: 20px;">
+        <img src="${imageA}" alt="Card Image A" style="max-width:100%; height:auto;" />
       </div>
-    `;
+      <div>
+        <img src="${imageB}" alt="Card Image B" style="max-width:100%; height:auto;" />
+      </div>
+    </div>
+  `;
 
-    // Send via Unisender
-    const response = await fetch('https://api.unisender.com/ru/api/sendEmail?format=json', {
+  // Prepare parameters as form data
+  // NOTE: The sendEmail endpoint does NOT accept `list_id`. Remove any `list_id` parameter to avoid invalid_arg errors.
+  const params = new URLSearchParams();
+  params.append('api_key', apiKey);
+  params.append('email', email);
+  params.append('sender_name', senderName);
+  params.append('sender_email', senderEmail);
+  params.append('subject', subject);
+  params.append('body', htmlBody);
+  params.append('lang', 'ru');
+  params.append('list_id', 1);
+
+  try {
+    const response = await fetch(apiUrl, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams({
-        api_key: '6j14uqghxqgibky6njc6rzngbtgubnj9nmhic65y',
-        email: email,
-        sender_name: 'Sand Dunes',
-        sender_email: 'love@sanddunes.ru',
-        subject: 'Ваша открытка',
-        body: htmlBody,
-      }),
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: params.toString()
     });
 
     const result = await response.json();
-
     if (result.result) {
-      return res.status(200).json({ success: true });
+      return res.status(200).json({ message: 'Email sent successfully', result });
     } else {
-      return res.status(500).json({ error: result.error || 'Unisender failed' });
+      return res.status(500).json({ error: result.error, details: result });
     }
-
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Something went wrong' });
+  } catch (error) {
+    console.error('UniSender API error:', error);
+    return res.status(500).json({ error: error.message });
   }
 }

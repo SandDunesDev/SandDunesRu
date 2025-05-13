@@ -10,15 +10,15 @@ export default function ImageSwitcherController({ setSelectedImageA, setSelected
   const isMobile = useMediaQuery("(max-width: 800px)")
 
   const imagesA = [
-    "https://raw.githubusercontent.com/souvlakiGirl013/sanddunes/refs/heads/main/Body01.png",
-    "https://raw.githubusercontent.com/souvlakiGirl013/sanddunes/refs/heads/main/Body02.png",
-    "https://raw.githubusercontent.com/souvlakiGirl013/sanddunes/refs/heads/main/Body03.png",
+    "images/image01.png",
+    "images/image02.png",
+    "images/image03.png",
   ]
 
   const imagesB = [
-    "https://raw.githubusercontent.com/souvlakiGirl013/sanddunes/refs/heads/main/image01.png",
-    "https://raw.githubusercontent.com/souvlakiGirl013/sanddunes/refs/heads/main/image02.png",
-    "https://raw.githubusercontent.com/souvlakiGirl013/sanddunes/refs/heads/main/image03.png",
+    "images/Body01.png",
+    "images/Body02.png",
+    "images/Body03.png",
   ]
 
   // ✅ Now it's safe to use indexA/indexB
@@ -58,7 +58,6 @@ export default function ImageSwitcherController({ setSelectedImageA, setSelected
           flexDirection: isMobile ? "column" : "row",
           width: "100%",
           height: "100%",
-          gap: "2px",
         }}
       >
         <ImageSwitcherWrapper
