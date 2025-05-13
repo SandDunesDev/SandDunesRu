@@ -19,6 +19,13 @@
  * For a full list of available parameters (e.g., tags, tracking settings), see:
  * https://www.unisender.com/ru/help/api/sendEmail/
  */
+import { fileURLToPath } from 'url';
+import * as fs from 'fs';
+import * as path from 'path';
+import { combineImagesBuffer } from '../utils/combine-image-buffer.mjs';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname  = path.dirname(__filename);
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -41,21 +48,60 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Server configuration error: missing API key or sender email.' });
   }
 
-  const imageA = selectedImageA;
-  const imageB = selectedImageB;
+  const img1Name = selectedImageA;
+  const img2Name = selectedImageB;
   const subject = 'Ваша открытка от нас';
   const apiUrl = 'https://api.unisender.com/ru/api/sendEmail?format=json';
 
+  const staticDir = path.join(__dirname, '../public/images');
+  // derive filename from input names (lowercased, without extension)
+  const baseName1 = path.basename(img1Name, path.extname(img1Name)).toLowerCase();
+  const baseName2 = path.basename(img2Name, path.extname(img2Name)).toLowerCase();
+  const filename = `${baseName1}-${baseName2}.png`;
+  const outputPath = path.join(staticDir, filename);
+
+  // Generate the combined image only if it doesn't exist
+  if (!fs.existsSync(outputPath)) {
+    const buffer = await combineImagesBuffer(img1Name, img2Name);
+    fs.writeFileSync(outputPath, buffer);
+    console.log(`Generated image at ${outputPath}`);
+  } else {
+    console.log(`Using existing image at ${outputPath}`);
+  }
+
+  // Construct publicly accessible URL to the image
+  const host = process.env.VERCEL_URL || 'sand-dunes-ru.vercel.app';
+  const baseUrl = `https://${host}`;
+  const imageUrl = `${baseUrl}/images/${filename}`;
+
   // Build HTML body with two images
   const htmlBody = `
-    <div style="font-family: Arial, sans-serif; text-align: center;">
-      <h2>Ваша открытка</h2>
-      <div style="margin-bottom: 20px;">
-        <img src="${imageA}" alt="Card Image A" style="max-width:100%; height:auto;" />
-      </div>
-      <div>
-        <img src="${imageB}" alt="Card Image B" style="max-width:100%; height:auto;" />
-      </div>
+    <div style="font-family: Helvetica, sans-serif; text-align: center;">
+        <img style="margin-top: 80px" src="${host}images/logo.png"/>
+        <h2 style="font-size: 16px; margin-top: 16px">Join the SAND DUNES community</h2>
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" align="center" width="100%">
+          <tr>
+            <td align="center">
+                <img style="display:block; width:100%; max-width:792px; height:auto; margin:0;" src="${imageUrl}" alt="Card Image" />
+            </td>
+          </tr>
+        </table>
+        <a
+        href="${imageUrl}"
+        target="_blank"
+        style="
+            display: inline-block;
+            padding: 14px 22px;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            color: white !important;
+            text-decoration: none;
+            background-color: #202020;
+            text-transform: uppercase;
+            margin-top: 94px;
+        ">
+            Скачать
+        </a>
     </div>
   `;
 
