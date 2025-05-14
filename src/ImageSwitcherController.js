@@ -10,15 +10,15 @@ export default function ImageSwitcherController({ setSelectedImageA, setSelected
   const isMobile = useMediaQuery("(max-width: 800px)")
 
   const imagesA = [
-    "images/image01.png",
-    "images/image02.png",
-    "images/image03.png",
+    "images/left/image01.png",
+    "images/left/image02.png",
+    "images/left/image03.png",
   ]
 
   const imagesB = [
-    "images/Body01.png",
-    "images/Body02.png",
-    "images/Body03.png",
+    "images/right/body01.png",
+    "images/right/body02.png",
+    "images/right/body03.png",
   ]
 
   // ✅ Now it's safe to use indexA/indexB
