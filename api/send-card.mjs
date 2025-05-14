@@ -19,13 +19,7 @@
  * For a full list of available parameters (e.g., tags, tracking settings), see:
  * https://www.unisender.com/ru/help/api/sendEmail/
  */
-import { fileURLToPath } from 'url';
-import * as fs from 'fs';
 import * as path from 'path';
-import { combineImagesBuffer } from '../utils/combine-image-buffer.mjs';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname  = path.dirname(__filename);
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -53,31 +47,20 @@ export default async function handler(req, res) {
   const subject = 'Ваша открытка от нас';
   const apiUrl = 'https://api.unisender.com/ru/api/sendEmail?format=json';
 
-  const staticDir = path.join(__dirname, '../public/images');
   // derive filename from input names (lowercased, without extension)
   const baseName1 = path.basename(img1Name, path.extname(img1Name)).toLowerCase();
   const baseName2 = path.basename(img2Name, path.extname(img2Name)).toLowerCase();
   const filename = `${baseName1}-${baseName2}.png`;
-  const outputPath = path.join(staticDir, filename);
-
-  // Generate the combined image only if it doesn't exist
-  if (!fs.existsSync(outputPath)) {
-    const buffer = await combineImagesBuffer(img1Name, img2Name);
-    fs.writeFileSync(outputPath, buffer);
-    console.log(`Generated image at ${outputPath}`);
-  } else {
-    console.log(`Using existing image at ${outputPath}`);
-  }
 
   // Construct publicly accessible URL to the image
   const host = process.env.VERCEL_URL || 'sand-dunes-ru.vercel.app';
   const baseUrl = `https://${host}`;
-  const imageUrl = `${baseUrl}/images/${filename}`;
+  const imageUrl = `${baseUrl}/images/combined/${filename}`;
 
   // Build HTML body with two images
   const htmlBody = `
     <div style="font-family: Helvetica, sans-serif; text-align: center;">
-        <img style="margin-top: 80px" src="${host}images/logo.png"/>
+        <img style="margin-top: 80px" src="${baseUrl}/images/logo.png"/>
         <h2 style="font-size: 16px; margin-top: 16px">Join the SAND DUNES community</h2>
         <table role="presentation" border="0" cellpadding="0" cellspacing="0" align="center" width="100%">
           <tr>
