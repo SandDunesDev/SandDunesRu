@@ -60,7 +60,7 @@ export default async function handler(req, res) {
   // Build HTML body with two images
   const htmlBody = `
     <div style="font-family: Helvetica, sans-serif; text-align: center; background: white !important;">
-        <img style="margin-top: 80px" src="${baseUrl}/images/logo.png"/>
+        <img style="margin-top: 80px" src="${baseUrl}/images/doggy.png"/>
         <h2 style="color: black; font-size: 16px; margin-top: 16px">Join the SAND DUNES community</h2>
         <table role="presentation" border="0" cellpadding="0" cellspacing="0" align="center" width="100%">
           <tr>
