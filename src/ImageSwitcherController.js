@@ -16,8 +16,9 @@ export default function ImageSwitcherController({ setSelectedImageA, setSelected
   ]
 
   const imagesB = [
-    "images/right/Body01.png",
-    "images/right/Body02.png",
+    "images/right/body01.png",
+    "images/right/body02.png",
+    "images/right/body03.png",
   ]
 
   // ✅ Now it's safe to use indexA/indexB
