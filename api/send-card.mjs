@@ -61,7 +61,7 @@ export default async function handler(req, res) {
   const htmlBody = `
     <div style="font-family: Helvetica, sans-serif; text-align: center;">
         <img style="margin-top: 80px" src="${baseUrl}/images/logo.png"/>
-        <h2 style="font-size: 16px; margin-top: 16px">Join the SAND DUNES community</h2>
+        <h2 style="color: black; font-size: 16px; margin-top: 16px">Join the SAND DUNES community</h2>
         <table role="presentation" border="0" cellpadding="0" cellspacing="0" align="center" width="100%">
           <tr>
             <td align="center">
