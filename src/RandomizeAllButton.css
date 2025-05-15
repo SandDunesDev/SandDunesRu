@@ -1,27 +1,24 @@
 .randomize-button {
-    width: 56px;
-    height: 56px;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-  }
-  
-  .randomize-button:hover {
-    transform: rotate(15deg) scale(1.1);
-    cursor: url('../src/cursorhover.png'), pointer;
-  }
-  
-  .randomize-button:active {
-    transform: scale(0.9);
-    opacity: 0.5;
-    cursor: url('../src/cursorhover.png'), pointer;
-  }
+  background-color: transparent;
+  background-image: url('../src/cube.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 68px;
+  height: 68px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  cursor: url('../src/cursorhover.png'), pointer;
+}
 
-  .control-button-wrapper:hover .control-button {
-    transform: rotate(15deg) scale(1.1);
-    cursor: url('../src/cursorhover.png'), pointer;
-  }
-  
-  .control-button-wrapper:active .control-button {
-    transform: scale(0.9);
-    opacity: 0.5;
-    cursor: url('../src/cursorhover.png'), pointer;
-  }
+.randomize-button:hover {
+  transform: translateX(-50%) rotate(15deg) scale(1.1);
+}
+
+.randomize-button:active {
+  transform: translateX(-50%) scale(0.9);
+  opacity: 0.5;
+}
