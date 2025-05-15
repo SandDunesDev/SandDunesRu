@@ -1,15 +1,15 @@
-.control-button {
-    width: 32px;
-    height: 32px;
+.randomize-button {
+    width: 56px;
+    height: 56px;
     transition: transform 0.2s ease, opacity 0.2s ease;
   }
   
-  .control-button:hover {
+  .randomize-button:hover {
     transform: rotate(15deg) scale(1.1);
     cursor: url('../src/cursorhover.png'), pointer;
   }
   
-  .control-button:active {
+  .randomize-button:active {
     transform: scale(0.9);
     opacity: 0.5;
     cursor: url('../src/cursorhover.png'), pointer;

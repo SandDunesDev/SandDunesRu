@@ -1,5 +1,6 @@
 import React from "react";
-import "./NextImageButton.css";
+import "./RandomizeAllButton.css";
+import Cube from "../src/cube.svg";
 
 export function RandomizeAllButton({ setIndexA, setIndexB }) {
     const getRandomIndex = () => Math.floor(Math.random() * 3);
@@ -21,13 +22,11 @@ export function RandomizeAllButton({ setIndexA, setIndexB }) {
                 transform: "translateX(-50%)",
             }}
         >
-            <div className="control-button-wrapper">
                 <img
-                    className="control-button"
-                    src="https://raw.githubusercontent.com/souvlakiGirl013/sanddunes/f8ff87197887705ab6ae2d0a7c6933f6d3cc714e/Type%3DGame.svg"
+                    className="randomize-button"
+                    src={Cube}
                     alt="icon"
                 />
-            </div>
         </button>
     );
 }
