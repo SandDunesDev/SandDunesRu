@@ -26,16 +26,15 @@
   color: #ffffff;
 }
 
-/* обычный placeholder */
 .email-input::placeholder {
   color: #999999;
   transition: color 0.3s ease;
 }
 
-/* placeholder и текст при ошибке */
 .email-input.error {
   color: #FF6161;
 }
+
 .email-input.error::placeholder {
   color: #FF6161;
 }
@@ -47,48 +46,40 @@
 }
 
 .send-button {
-  background-image: url('../src/ButtonDefault.svg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 72px;
-  height: 100%;
+  background: none;
   border: none;
-  cursor: url('../src/cursorhover.png'), pointer;
+  padding: 0;
+  width: 72px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
-  user-select: none;
-}
-
-.send-button:hover:not(.loading):not(.clicked) {
-  background-image: url('../src/ButtonFocused.svg');
-}
-
-.send-button.clicked {
-  background-image: url('../src/ButtonClicked.svg');
   cursor: url('../src/cursorhover.png'), pointer;
 }
 
-.send-icon {
-  width: 100%;
-  height: 100%;
-}
-
+/*
 .send-button.loading {
-  background: transparent;
   cursor: wait;
+}
+*/
+
+.button-image {
+  width: 100%;
+  height: 48px;
+  object-fit: cover;
+  display: block;
+  user-select: none;
+  pointer-events: none;
 }
 
 .spinner {
   width: 48px;
   height: 48px;
-  background-image: url('../src/spinner.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
   animation: spin 2s linear infinite;
+  object-fit: cover;
+  display: block;
   user-select: none;
+  pointer-events: none;
 }
 
 @keyframes spin {

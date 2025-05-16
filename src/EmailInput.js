@@ -1,27 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./EmailInput.css";
 
-// ⬇ Компонент для предзагрузки изображений
-const PreloadButtonImages = () => {
-  useEffect(() => {
-    const images = [
-      require("../src/ButtonDefault.svg"),
-      require("../src/ButtonFocused.svg"),
-      require("../src/ButtonClicked.svg"),
-      require("../src/spinner.svg"),
-    ];
-    images.forEach((src) => {
-      const img = new Image();
-      img.src = src;
-    });
-  }, []);
-
-  return null;
-};
+import btnDefault from "../src/ButtonDefault.svg";
+import btnFocused from "../src/ButtonFocused.svg";
+import btnClicked from "../src/ButtonClicked.svg";
+import spinner from "../src/spinner.svg";
 
 export default function EmailInput({ selectedImageA, selectedImageB, onSuccess }) {
   const [email, setEmail] = useState("");
   const [isFocused, setIsFocused] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const [loading, setLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [clicked, setClicked] = useState(false);
@@ -32,27 +20,16 @@ export default function EmailInput({ selectedImageA, selectedImageB, onSuccess }
   };
 
   const handleSubmit = async () => {
-    setClicked(true);
-
-    if (!email) {
+    if (!email || !validateEmail(email)) {
       setHasError(true);
-      setClicked(false);
       return;
-    }
-
-    if (!validateEmail(email)) {
-      setHasError(true);
-      setClicked(false);
-      return;
-    } else {
-      setHasError(false);
     }
 
     if (!selectedImageA || !selectedImageB) {
-      setClicked(false);
       return;
     }
 
+    setClicked(true);
     setLoading(true);
 
     try {
@@ -76,13 +53,20 @@ export default function EmailInput({ selectedImageA, selectedImageB, onSuccess }
       console.error(err);
     } finally {
       setLoading(false);
-      setClicked(false);
+      // небольшая задержка для видимости клика
+      setTimeout(() => setClicked(false), 300);
     }
+  };
+
+  const getButtonImage = () => {
+    if (loading) return spinner;
+    if (clicked) return btnClicked;
+    if (isHovered || isFocused) return btnFocused;
+    return btnDefault;
   };
 
   return (
     <div className="email-input-wrapper">
-      <PreloadButtonImages /> {/* ⬅ Добавлен вызов компонента для прелоада */}
       <input
         type="email"
         placeholder="email"
@@ -97,18 +81,17 @@ export default function EmailInput({ selectedImageA, selectedImageB, onSuccess }
       />
       <div className="divider" />
       <button
-        className={`send-button 
-          ${loading ? "loading" : ""}
-          ${clicked && !loading ? "clicked" : ""}
-        `}
+        className="send-button"
         onClick={handleSubmit}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
         disabled={loading}
       >
-        {!loading ? (
-          <span className="send-icon" />
-        ) : (
-          <span className="spinner" />
-        )}
+        <img
+          src={getButtonImage()}
+          alt="Send"
+          className={loading ? "spinner" : "button-image"}
+        />
       </button>
     </div>
   );
