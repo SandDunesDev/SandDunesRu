@@ -1,5 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./EmailInput.css";
+
+// ⬇ Компонент для предзагрузки изображений
+const PreloadButtonImages = () => {
+  useEffect(() => {
+    const images = [
+      require("../src/ButtonDefault.svg"),
+      require("../src/ButtonFocused.svg"),
+      require("../src/ButtonClicked.svg"),
+      require("../src/spinner.svg"),
+    ];
+    images.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
+
+  return null;
+};
 
 export default function EmailInput({ selectedImageA, selectedImageB, onSuccess }) {
   const [email, setEmail] = useState("");
@@ -64,6 +82,7 @@ export default function EmailInput({ selectedImageA, selectedImageB, onSuccess }
 
   return (
     <div className="email-input-wrapper">
+      <PreloadButtonImages /> {/* ⬅ Добавлен вызов компонента для прелоада */}
       <input
         type="email"
         placeholder="email"
