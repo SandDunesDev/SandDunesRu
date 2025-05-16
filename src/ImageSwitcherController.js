@@ -1,7 +1,15 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useMemo } from "react"
 import ImageSwitcherWrapper from "./ImageSwitcherWrapper.js"
 import { RandomizeAllButton } from "./RandomizeAllButton.js"
 import { useMediaQuery } from "./UseMediaQuery.js"
+
+import Img01 from "./images/01.png"
+import Img02 from "./images/02.png"
+import Img03 from "./images/03.png"
+
+import Pic01 from "./images/picture01.png"
+import Pic02 from "./images/picture02.png"
+import Pic03 from "./images/picture03.png"
 
 export default function ImageSwitcherController({ setSelectedImageA, setSelectedImageB }) {
   const [indexA, setIndexA] = useState(0)
@@ -9,41 +17,28 @@ export default function ImageSwitcherController({ setSelectedImageA, setSelected
 
   const isMobile = useMediaQuery("(max-width: 799px)")
 
-  const imagesA = [
-    "images/image01.png",
-    "images/image02.png",
-    "images/image03.png",
-  ]
-
-  const imagesB = [
-    "images/Body01.png",
-    "images/Body02.png",
-    "images/Body03.png",
-  ]
+  const imagesA = useMemo(() => [Img01, Img02, Img03], [])
+  const imagesB = useMemo(() => [Pic01, Pic02, Pic03], [])
 
   useEffect(() => {
     setSelectedImageA(imagesA[indexA])
     setSelectedImageB(imagesB[indexB])
   }, [indexA, indexB, imagesA, imagesB, setSelectedImageA, setSelectedImageB])
 
-  // Позиция кнопок NextImageButton внутри каждого ImageSwitcherWrapper
-  // для экранов > 800px — по центру внизу (bottom:16, left: 50% с transform)
-  // для экранов ≤ 799px — задана текущая позиция (например, bottom-left и top-left)
-  
   const buttonPositionA = isMobile
-    ? { bottom: 16, left: 20 } // мобильная — слева снизу
-    : { bottom: 28, left: "50%", transform: "translateX(-50%)" } // десктоп — по центру снизу
+    ? { bottom: 52, left: 20 }
+    : { bottom: 64, left: "50%", transform: "translateX(-50%)" }
 
   const buttonPositionB = isMobile
-    ? { top: 16, left: 20 } // мобильная — слева сверху
-    : { bottom: 28, left: "50%", transform: "translateX(-50%)" } // десктоп — по центру снизу
+    ? { top: 16, left: 20 }
+    : { bottom: 64, left: "50%", transform: "translateX(-50%)" }
 
   return (
     <div
       style={{
         position: "relative",
         width: "100%",
-        height: "100%",
+        height: "100vh",
         overflow: "hidden",
         backgroundColor: "white",
       }}

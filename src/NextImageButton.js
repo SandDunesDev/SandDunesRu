@@ -11,7 +11,7 @@ export function NextImageButton({ imageIndex = 0, setImageIndex, style = {} }) {
         <button
             onClick={handleClick}
             className="control-button"
-            style={style}  // применяем стиль из пропса
+            style={style}
         >
         </button>
     );

@@ -1,38 +1,60 @@
-import React, { useState } from "react";
-import { NextImageButton } from "./NextImageButton.js";
+import React, { useState } from "react"
+import { NextImageButton } from "./NextImageButton.js"
 
 export default function ImageSwitcherWrapper({
-    controlledIndex,
-    setControlledIndex,
-    images = [],
-    buttonPosition = {},  // добавляем пропс для позиции кнопки
+  controlledIndex,
+  setControlledIndex,
+  images = [],
+  buttonPosition = {},
 }) {
-    const [localIndex, setLocalIndex] = useState(0);
+  const [localIndex, setLocalIndex] = useState(0)
 
-    const isControlled = controlledIndex !== undefined && setControlledIndex;
-    const imageIndex = isControlled ? controlledIndex : localIndex;
-    const setImageIndex = isControlled ? setControlledIndex : setLocalIndex;
+  const isControlled = controlledIndex !== undefined && setControlledIndex
+  const imageIndex = isControlled ? controlledIndex : localIndex
+  const setImageIndex = isControlled ? setControlledIndex : setLocalIndex
 
-    return (
-        <div
-            style={{
-                flex: 1,
-                height: "100vp",
-                backgroundImage: `url(${images[imageIndex]})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                position: "relative",
-                display: "flex",
-                alignItems: "flex-end",
-                justifyContent: "center",
-                padding: "28px",
-            }}
-        >
-            <NextImageButton
-                imageIndex={imageIndex}
-                setImageIndex={setImageIndex}
-                style={buttonPosition}  // прокидываем стиль позиционирования
-            />
-        </div>
-    );
+  return (
+    <div
+      style={{
+        position: "relative",
+        overflow: "hidden",
+        width: "100%",
+        height: "100%",
+      }}
+    >
+      {images.map((src, index) => (
+        <img
+          key={index}
+          src={src}
+          alt=""
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            maxHeight: "100%",
+            objectFit: "cover",
+            display: "block",
+            transition: "opacity 0.4s ease",
+            opacity: index === imageIndex ? 1 : 0,
+            pointerEvents: index === imageIndex ? "auto" : "none",
+          }}
+        />
+      ))}
+
+      <div
+        style={{
+          position: "absolute",
+          ...buttonPosition,
+          zIndex: 10,
+        }}
+      >
+        <NextImageButton
+          imageIndex={imageIndex}
+          setImageIndex={setImageIndex}
+        />
+      </div>
+    </div>
+  )
 }
