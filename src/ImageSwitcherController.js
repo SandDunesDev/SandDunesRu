@@ -7,7 +7,7 @@ export default function ImageSwitcherController({ setSelectedImageA, setSelected
   const [indexA, setIndexA] = useState(0)
   const [indexB, setIndexB] = useState(0)
 
-  const isMobile = useMediaQuery("(max-width: 800px)")
+  const isMobile = useMediaQuery("(max-width: 799px)")
 
   const imagesA = [
     "images/image01.png",
@@ -21,11 +21,22 @@ export default function ImageSwitcherController({ setSelectedImageA, setSelected
     "images/Body03.png",
   ]
 
-  // ✅ Now it's safe to use indexA/indexB
   useEffect(() => {
     setSelectedImageA(imagesA[indexA])
     setSelectedImageB(imagesB[indexB])
   }, [indexA, indexB, imagesA, imagesB, setSelectedImageA, setSelectedImageB])
+
+  // Позиция кнопок NextImageButton внутри каждого ImageSwitcherWrapper
+  // для экранов > 800px — по центру внизу (bottom:16, left: 50% с transform)
+  // для экранов ≤ 799px — задана текущая позиция (например, bottom-left и top-left)
+  
+  const buttonPositionA = isMobile
+    ? { bottom: 16, left: 20 } // мобильная — слева снизу
+    : { bottom: 28, left: "50%", transform: "translateX(-50%)" } // десктоп — по центру снизу
+
+  const buttonPositionB = isMobile
+    ? { top: 16, left: 20 } // мобильная — слева сверху
+    : { bottom: 28, left: "50%", transform: "translateX(-50%)" } // десктоп — по центру снизу
 
   return (
     <div
@@ -37,20 +48,10 @@ export default function ImageSwitcherController({ setSelectedImageA, setSelected
         backgroundColor: "white",
       }}
     >
-      <div
-        style={{
-          position: "absolute",
-          top: "40px",
-          left: "50%",
-          transform: "translateX(-50%)",
-          zIndex: 10,
-        }}
-      >
-        <RandomizeAllButton
-          setIndexA={setIndexA}
-          setIndexB={setIndexB}
-        />
-      </div>
+      <RandomizeAllButton
+        setIndexA={setIndexA}
+        setIndexB={setIndexB}
+      />
 
       <div
         style={{
@@ -64,11 +65,13 @@ export default function ImageSwitcherController({ setSelectedImageA, setSelected
           controlledIndex={indexA}
           setControlledIndex={setIndexA}
           images={imagesA}
+          buttonPosition={buttonPositionA}
         />
         <ImageSwitcherWrapper
           controlledIndex={indexB}
           setControlledIndex={setIndexB}
           images={imagesB}
+          buttonPosition={buttonPositionB}
         />
       </div>
     </div>

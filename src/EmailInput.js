@@ -53,7 +53,6 @@ export default function EmailInput({ selectedImageA, selectedImageB, onSuccess }
       console.error(err);
     } finally {
       setLoading(false);
-      // небольшая задержка для видимости клика
       setTimeout(() => setClicked(false), 300);
     }
   };
@@ -61,7 +60,7 @@ export default function EmailInput({ selectedImageA, selectedImageB, onSuccess }
   const getButtonImage = () => {
     if (loading) return spinner;
     if (clicked) return btnClicked;
-    if (isHovered || isFocused) return btnFocused;
+    if (isHovered) return btnFocused;
     return btnDefault;
   };
 

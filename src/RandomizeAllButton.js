@@ -1,6 +1,5 @@
 import React from "react";
 import "./RandomizeAllButton.css";
-import Cube from "../src/cube.svg";
 
 export function RandomizeAllButton({ setIndexA, setIndexB }) {
     const getRandomIndex = () => Math.floor(Math.random() * 3);

@@ -5,13 +5,14 @@
   background-size: contain;
   border: none;
   position: absolute;
-  top: 40px;
+  top: 80px;
   left: 50%;
   transform: translateX(-50%);
   width: 68px;
   height: 68px;
   transition: transform 0.2s ease, opacity 0.2s ease;
   cursor: url('../src/cursorhover.png'), pointer;
+  z-index: 10;
 }
 
 .randomize-button:hover {
@@ -21,4 +22,21 @@
 .randomize-button:active {
   transform: translateX(-50%) scale(0.9);
   opacity: 0.5;
+}
+
+@media screen and (max-width: 799px) {
+  .randomize-button {
+    top: 50%;
+    left: auto; 
+    right: 16px; 
+    transform: translateY(-50%);
+  }
+
+  .randomize-button:hover {
+    transform: translateY(-50%) rotate(15deg) scale(1.1);
+  }
+
+  .randomize-button:active {
+    transform: translateY(-50%) scale(0.9);
+  }
 }

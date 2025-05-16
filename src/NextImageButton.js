@@ -1,7 +1,7 @@
 import React from "react";
 import "./NextImageButton.css";
 
-export function NextImageButton({ imageIndex = 0, setImageIndex }) {
+export function NextImageButton({ imageIndex = 0, setImageIndex, style = {} }) {
     const handleClick = () => {
         const next = (imageIndex + 1) % 3;
         setImageIndex(next);
@@ -11,7 +11,8 @@ export function NextImageButton({ imageIndex = 0, setImageIndex }) {
         <button
             onClick={handleClick}
             className="control-button"
-            >
+            style={style}  // применяем стиль из пропса
+        >
         </button>
     );
 }

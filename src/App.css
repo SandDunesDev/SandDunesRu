@@ -46,15 +46,15 @@ body {
   left: 50%;
   transform: translateX(-50%);
   width: 40%;
-  bottom: 36px; /* default for large screens */
+  bottom: 20px; /* default for large screens */
   z-index: 10;
 }
 
-/* For small screens: center vertically and horizontally   */
+/* For small screens: keep bottom offset instead of vertical centering */
 @media screen and (max-width: 799px) {
   .emailInputContainer {
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     width: 90%;
+    bottom: 20px; /* сохраняем отступ снизу */
   }
 }
-
