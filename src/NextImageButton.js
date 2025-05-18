@@ -3,7 +3,7 @@ import "./NextImageButton.css";
 
 export function NextImageButton({ imageIndex = 0, setImageIndex, style = {} }) {
     const handleClick = () => {
-        const next = (imageIndex + 1) % 3;
+        const next = (imageIndex + 1) % 7;
         setImageIndex(next);
     };
 
