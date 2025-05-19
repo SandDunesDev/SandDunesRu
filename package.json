@@ -21,7 +21,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "combine-images": "rm -rf ./public/images/combined & node ./utils/combine-images.mjs ../src/images/left ../src/images/right ../public/images/combined"
   },
   "eslintConfig": {
     "extends": [

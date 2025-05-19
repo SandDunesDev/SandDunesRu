@@ -20,6 +20,7 @@
  * https://www.unisender.com/ru/help/api/sendEmail/
  */
 import * as path from 'path';
+import { stripHash } from '../utils/strip-hash.mjs';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -42,8 +43,8 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Server configuration error: missing API key or sender email.' });
   }
 
-  const img1Name = selectedImageA;
-  const img2Name = selectedImageB;
+  const img1Name = stripHash(selectedImageA);
+  const img2Name = stripHash(selectedImageB);
   const subject = 'Ваша открытка от нас';
   const apiUrl = 'https://api.unisender.com/ru/api/sendEmail?format=json';
 
