@@ -56,7 +56,8 @@ export default async function handler(req, res) {
   // Construct publicly accessible URL to the image
   const host = process.env.VERCEL_URL || 'sand-dunes-ru.vercel.app';
   const baseUrl = `https://${host}`;
-  const imageUrl = `${baseUrl}/images/combined/${filename}`;
+  const imageUrl = `${baseUrl}/images/1x/combined/${filename}`;
+  const downloadImageUrl = `${baseUrl}/images/2x/combined/${filename}`;
 
   // Build HTML body with two images
   const htmlBody = `
@@ -71,7 +72,7 @@ export default async function handler(req, res) {
           </tr>
         </table>
         <a
-        href="${imageUrl}"
+        href="${downloadImageUrl}"
         target="_blank"
         style="
             display: inline-block;

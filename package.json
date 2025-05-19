@@ -22,7 +22,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "combine-images": "rm -rf ./public/images/combined & node ./utils/combine-images.mjs ../src/images/left ../src/images/right ../public/images/combined"
+    "combine-images": "rm -rf ./public/images/x1/combined & node ./utils/combine-images.mjs ../src/images/1x/left ../src/images/1x/right ../public/images/1x/combined",
+    "combine-images-x2": "rm -rf ./public/images/x2/combined & node ./utils/combine-images.mjs ../src/images/2x/left ../src/images/2x/right ../public/images/2x/combined 1584 1030"
   },
   "eslintConfig": {
     "extends": [

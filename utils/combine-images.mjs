@@ -81,7 +81,7 @@ export async function combineFolders(leftDir, rightDir, outputDir, options = {})
 if (import.meta.url === `file://${process.argv[1]}`) {
   (async () => {
     try {
-      const [, , leftFolder, rightFolder, outFolder] = process.argv;
+      const [, , leftFolder, rightFolder, outFolder, userWidth, userHeight] = process.argv;
       if (!leftFolder || !rightFolder) {
         console.error('Usage: node combine-images.js <leftFolder> <rightFolder> [outputFolder]');
         process.exit(1);
@@ -96,7 +96,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
         ? (path.isAbsolute(outFolder) ? outFolder : path.join(__dirname, outFolder))
         : path.join(__dirname, 'combined');
 
-      await combineFolders(leftDir, rightDir, outputDir);
+      await combineFolders(leftDir, rightDir, outputDir, { width: Number(userWidth), height: Number(userHeight) });
       console.log('All combinations generated in', outputDir);
     } catch (err) {
       console.error(err);
