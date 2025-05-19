@@ -1,7 +1,15 @@
 .control-button {
-    width: 40px;
-    height: 40px;
+    position: absolute;
+    background-color: transparent;
+    background-image: url('https://raw.githubusercontent.com/souvlakiGirl013/sanddunes/f8ff87197887705ab6ae2d0a7c6933f6d3cc714e/Type%3DSwitch.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: none; 
+    width: 28px;
+    height: 28px;
     transition: transform 0.2s ease, opacity 0.2s ease;
+    cursor: url('../src/cursorhover.png'), pointer;
+    z-index: 10;
   }
   
   .control-button:hover {

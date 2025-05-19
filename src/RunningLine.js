@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 export default function RunningLine() {
-  const text = "choisis l'image → choisis le texte → modifies si nécessaire → s*nd some DuNes → répétes choose the image → choose the text → change if needed → s*nd some DuNes → repeat выбери картинку → выбери текст → поменяй если нужно → отправь → повтори";
+  const text = "crée une carte → assemble ou laisse le hasard faire ⚄ → reçois-la par e-mail  |  craft a postcard → match two columns or go random ⚄ → get your card emailed to you  |  как сделать открытку? → создай пару сам или доверься случайному выбору ⚄ → получи письмо с открыткой  |  ";
   const textRef = useRef(null);
   const [textWidth, setTextWidth] = useState(0);
 
@@ -59,7 +59,7 @@ export default function RunningLine() {
               fontFamily: "Roboto Mono, monospace",
               fontSize: 12,
               color: "#000000",
-              paddingRight: "100px",
+              paddingRight: "8px",
             }}
           >
             {text}

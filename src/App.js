@@ -45,21 +45,20 @@ function App() {
           top: 0, left: 0,
           width: "100vw",
           height: "100vh",
-          backgroundColor: "rgba(0,0,0,0.6)",
+          backgroundColor: "rgba(37,37,37,0.7)",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          gap: "4px",
           zIndex: 999,
         }}>
           <div className="popUpContainer">
-            <div className="popUpText">
               We have sent you some DuNes!
               Check your inbox
-            </div>
+           </div>
           <button className="popUpButton" onClick={() => setShowPopup(false)} >
           <span className="popUpButtonImage" />
           </button>
-          </div>
         </div>
       )}
     </div>

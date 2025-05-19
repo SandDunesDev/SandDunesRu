@@ -1,34 +1,31 @@
 .popUpContainer {
     background-color: #fff;
     display: flex;
-    width: 100%;
-    max-width: 255px;
+    width: 320px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: none;
+    padding: 24px;
+    border: 2px;
+    border-color: #242324;
 
-    font-family: Inter, sans-serif;
+    font-family: Helvetica, sans-serif;
     font-size: 16px;
     text-align: center;
-    color: #202020;
+    color: #222222;
     font-style: normal;
     font-weight: 500;
     line-height: 20px; /* 125% */
-    letter-spacing: -0.32px;
-}
-
-.popUpText {
-    padding: 24px;
+    letter-spacing: -2px;
 }
 
 .popUpButton {
     display: flex;
-    width: 100%;
+    width: 320px;
     height: 48px;
     align-content: center;
     justify-content: center;
-    cursor: pointer;
+    cursor: url('../src/cursorhover.png'), pointer;
     border: none;
     background-color: #202020;
 }

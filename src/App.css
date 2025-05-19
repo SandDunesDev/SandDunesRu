@@ -1,3 +1,11 @@
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
 .App {
   text-align: center;
 }
@@ -46,16 +54,15 @@ body {
   left: 50%;
   transform: translateX(-50%);
   width: 40%;
-  bottom: 40px; /* default for large screens */
+  bottom: 20px; /* default for large screens */
   z-index: 10;
 }
 
-/* For small screens: center vertically and horizontally */
+/* For small screens: keep bottom offset instead of vertical centering */
 @media screen and (max-width: 799px) {
   .emailInputContainer {
-    top: 50%;
-    bottom: auto;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     width: 90%;
+    bottom: 20px; /* сохраняем отступ снизу */
   }
 }
