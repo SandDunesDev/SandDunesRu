@@ -19,6 +19,8 @@
  * For a full list of available parameters (e.g., tags, tracking settings), see:
  * https://www.unisender.com/ru/help/api/sendEmail/
  */
+import * as path from 'path';
+import { stripHash } from '../utils/strip-hash.mjs';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -33,7 +35,7 @@ export default async function handler(req, res) {
 
   const apiKey = process.env.UNISENDER_API_KEY;
   const senderEmail = process.env.UNISENDER_SENDER_EMAIL;
-  const senderName = process.env.SENDER_NAME || 'No-Reply';
+  const senderName = process.env.SENDER_NAME || 'Sand Dunes';
 
   // Validate essential configuration
   if (!apiKey || !senderEmail) {
@@ -41,21 +43,50 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Server configuration error: missing API key or sender email.' });
   }
 
-  const imageA = selectedImageA;
-  const imageB = selectedImageB;
+  const img1Name = stripHash(selectedImageA);
+  const img2Name = stripHash(selectedImageB);
   const subject = 'Ваша открытка от нас';
   const apiUrl = 'https://api.unisender.com/ru/api/sendEmail?format=json';
 
+  // derive filename from input names (lowercased, without extension)
+  const baseName1 = path.basename(img1Name, path.extname(img1Name)).toLowerCase();
+  const baseName2 = path.basename(img2Name, path.extname(img2Name)).toLowerCase();
+  const filename = `${baseName1}-${baseName2}.png`;
+
+  // Construct publicly accessible URL to the image
+  const host = process.env.VERCEL_URL || 'sand-dunes-ru.vercel.app';
+  const baseUrl = `https://${host}`;
+  const imageUrl = `${baseUrl}/images/1x/combined/${filename}`;
+  const downloadImageUrl = `${baseUrl}/images/2x/combined/${filename}`;
+
   // Build HTML body with two images
   const htmlBody = `
-    <div style="font-family: Arial, sans-serif; text-align: center;">
-      <h2>Ваша открытка</h2>
-      <div style="margin-bottom: 20px;">
-        <img src="${imageA}" alt="Card Image A" style="max-width:100%; height:auto;" />
-      </div>
-      <div>
-        <img src="${imageB}" alt="Card Image B" style="max-width:100%; height:auto;" />
-      </div>
+    <div style="font-family: Helvetica, sans-serif; text-align: center; background: white !important;">
+        <img style="margin-top: 80px" src="${baseUrl}/images/doggy.png"/>
+        <h2 style="color: black; font-size: 16px; margin-top: 16px">Join the SAND DUNES community</h2>
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" align="center" width="100%">
+          <tr>
+            <td align="center">
+                <img style="display:block; width:100%; max-width:792px; height:auto; margin:0;" src="${imageUrl}" alt="Card Image" />
+            </td>
+          </tr>
+        </table>
+        <a
+        href="${downloadImageUrl}"
+        target="_blank"
+        style="
+            display: inline-block;
+            padding: 14px 22px;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            color: white !important;
+            text-decoration: none;
+            background-color: #202020;
+            text-transform: uppercase;
+            margin-top: 94px;
+        ">
+            Скачать
+        </a>
     </div>
   `;
 

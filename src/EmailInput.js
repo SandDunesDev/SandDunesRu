@@ -41,7 +41,7 @@ export default function EmailInput({ selectedImageA, selectedImageB, onSuccess }
 
       const result = await response.json();
 
-      if (response.ok && result.success) {
+      if (response.ok && !result.error) {
         setEmail("");
         setHasError(false);
         onSuccess();

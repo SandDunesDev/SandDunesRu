@@ -14,13 +14,16 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-scripts": "^5.0.1",
+    "sharp": "^0.34.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "combine-images": "rm -rf ./public/images/x1/combined & node ./utils/combine-images.mjs ../src/images/1x/left ../src/images/1x/right ../public/images/1x/combined",
+    "combine-images-x2": "rm -rf ./public/images/x2/combined & node ./utils/combine-images.mjs ../src/images/2x/left ../src/images/2x/right ../public/images/2x/combined 1584 1030"
   },
   "eslintConfig": {
     "extends": [
