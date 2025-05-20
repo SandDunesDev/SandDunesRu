@@ -53,7 +53,9 @@ export default function ImageSwitcherWrapper({
         <NextImageButton
           imageIndex={imageIndex}
           setImageIndex={setImageIndex}
+          imagesLength={images.length}
         />
+
       </div>
     </div>
   )
