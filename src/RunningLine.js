@@ -17,7 +17,7 @@ export default function RunningLine() {
     <div
       style={{
         overflow: "hidden",
-        width: "100vp",
+        width: "100vw",
         border: "2px solid #222222",
         padding: "14px 20px",
         margin: "20px 20px 0 20px",

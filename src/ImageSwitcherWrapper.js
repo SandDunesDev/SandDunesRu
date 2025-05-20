@@ -46,8 +46,8 @@ export default function ImageSwitcherWrapper({
       <div
         style={{
           position: "absolute",
-          ...buttonPosition,
           zIndex: 10,
+          ...buttonPosition,
         }}
       >
         <NextImageButton
