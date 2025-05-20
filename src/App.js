@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import "./PopUp.css";
 import ImageSwitcherController from "./ImageSwitcherController";
@@ -10,6 +10,16 @@ function App() {
   const [selectedImageB, setSelectedImageB] = useState("");
   const [showPopup, setShowPopup] = useState(false);
 
+  useEffect(() => {
+    const setVh = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty("--vh", `${vh}px`);
+    };
+    setVh();
+    window.addEventListener("resize", setVh);
+    return () => window.removeEventListener("resize", setVh);
+  }, []);
+
   return (
     <div style={{
       position: "relative",
@@ -17,7 +27,7 @@ function App() {
       flexDirection: "column",
       justifyContent: "center",
       width: "100vw",
-      height: "100vh",
+      height: "calc(var(--vh, 1vh) * 100)",
       backgroundColor: "#fff",
     }}>
       <div style={{ position: "absolute", top: 0, left: 0, width: "100%", zIndex: 10 }}>
@@ -44,9 +54,10 @@ function App() {
           position: "fixed",
           top: 0, left: 0,
           width: "100vw",
-          height: "100vh",
+          height: "calc(var(--vh, 1vh) * 100)",
           backgroundColor: "rgba(37,37,37,0.7)",
           display: "flex",
+          flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
           gap: "4px",
