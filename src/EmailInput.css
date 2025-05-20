@@ -71,6 +71,8 @@
   display: block;
   user-select: none;
   pointer-events: none;
+  fill: none;
+  stroke: none;
 }
 
 .spinner {

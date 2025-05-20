@@ -35,7 +35,7 @@ export default function ImageSwitcherController({ setSelectedImageA, setSelected
     : { bottom: 64, left: "50%", transform: "translateX(-50%)" }
 
   const buttonPositionB = isMobile
-    ? { top: 38, right: 64 }
+    ? { top: 40, right: 64 }
     : { bottom: 64, left: "50%", transform: "translateX(-50%)" }
 
   return (
