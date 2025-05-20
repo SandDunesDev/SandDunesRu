@@ -60,18 +60,20 @@ function App() {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          gap: "4px",
           zIndex: 999,
         }}>
-          <div className="popUpContainer">
-              We have sent you some DuNes!
+          <div className="popUpWrapper">
+            <div className="popUpContainer">
+              We have sent you some DuNes! <br />
               Check your inbox
-           </div>
-          <button className="popUpButton" onClick={() => setShowPopup(false)} >
-          <span className="popUpButtonImage" />
-          </button>
+            </div>
+            <button className="popUpButton" onClick={() => setShowPopup(false)}>
+              <span className="popUpButtonImage" />
+            </button>
+          </div>
         </div>
       )}
+
     </div>
   );
 }

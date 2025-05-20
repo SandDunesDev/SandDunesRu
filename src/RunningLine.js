@@ -17,11 +17,11 @@ export default function RunningLine() {
     <div
       style={{
         overflow: "hidden",
-        width: "100vw",
         border: "2px solid #222222",
         padding: "14px 20px",
         margin: "20px 20px 0 20px",
         backgroundColor: "white",
+        boxSizing: "border-box",
       }}
     >
       {/* Невидимый текст для измерения */}
