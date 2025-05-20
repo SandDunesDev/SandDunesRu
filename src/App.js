@@ -30,7 +30,7 @@ function App() {
       height: "calc(var(--vh, 1vh) * 100)",
       backgroundColor: "#fff",
     }}>
-      <div style={{ position: "absolute", top: 0, left: 0, width: "100%", zIndex: 10 }}>
+      <div style={{ position: "fixed", top: 0, left: 0, width: "100%", zIndex: 10 }}>
         <RunningLine />
       </div>
 

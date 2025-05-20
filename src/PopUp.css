@@ -21,7 +21,7 @@
 .popUpButton {
     display: flex;
     flex-direction: row;
-    width: 100%;
+    width: 320px;
     height: 48px;
     align-content: center;
     justify-content: center;
@@ -31,6 +31,7 @@
 }
 
 .popUpButtonImage {
+    width: 100%;
     height: 48px;
     background-image: url('../src/OkDefault.svg');
     background-size: contain;
