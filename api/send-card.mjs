@@ -73,7 +73,7 @@ export default async function handler(req, res) {
                                 cellspacing="0" cellpadding="0" border="0">
                                 <tr>
                                     <td align="center">
-                                        <img src="/images/header.png"
+                                        <img src="${baseUrl}/images/header.png"
                                             style="display: block; width: auto; height: 167px; margin-top: -10px; margin-bottom: -10px;" />
                                     </td>
                                 </tr>
@@ -125,7 +125,7 @@ export default async function handler(req, res) {
                                                         fashion–терапии.
                                                     </p>
                                                     <img style="display:block; width:100%; max-width:453px; height:auto; margin:0; margin-top: 64px; box-shadow: 7px 7px 0 0 black;"
-                                                        src="/images/1x/combined/left01-right01.png" alt="Card Image" />
+                                                        src="${imageUrl}" alt="Card Image" />
                                                     <a href="${downloadImageUrl}" target="_blank" style="
                 display: inline-block;
                 padding: 14px 22px;
@@ -157,7 +157,7 @@ export default async function handler(req, res) {
                                             <tr>
                                                 <td align="center">
                                                     <img style="display: block; width: 94px; margin-top: 80px;"
-                                                        src="/images/logo.png" />
+                                                        src="${baseUrl}/images/logo.png" />
                                                     <p
                                                         style="font-family: 'Helvetica Neue', Helvetica, sans-serif; color: white; font-size: 15px; margin-bottom: 0px; margin-top: 30px">
                                                         Песчаные барханы — самое обычное явление пустыни. </br> Но
