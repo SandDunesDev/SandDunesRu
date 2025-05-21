@@ -201,7 +201,7 @@ export default async function handler(req, res) {
                                                 <td align="center">
                                                     <div style="width: 100%; height: 80px; background-color: black;">&nbsp;</div>
                                                     <a href="${downloadImageUrl}" target="_blank" style="
-                                                    display: inline-block;
+                                                    display: block;
                                                     font-family: 'Helvetica Neue', sans-serif;
                                                     font-size: 12px;
                                                     color: white !important;
