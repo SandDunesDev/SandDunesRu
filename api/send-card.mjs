@@ -180,7 +180,7 @@ export default async function handler(req, res) {
                                                     padding: 30px 0;
                                                     text-align: center;
                                                 ">Почему щенок?</a>
-                                                    <div style="width: 100%; height: 80px;">&nbsp;</div>
+                                                    <div style="width: 100%; height: 80px; background-color: black;">&nbsp;</div>
                                                 </td>
                                             </tr>
                                         </table>
@@ -199,6 +199,7 @@ export default async function handler(req, res) {
                                             cellpadding="0" border="0">
                                             <tr>
                                                 <td align="center">
+                                                    <div style="width: 100%; height: 80px; background-color: black;">&nbsp;</div>
                                                     <a href="${downloadImageUrl}" target="_blank" style="
                                                     display: inline-block;
                                                     font-family: 'Helvetica Neue', sans-serif;
@@ -213,7 +214,7 @@ export default async function handler(req, res) {
                                                         2025
                                                     </p>
                                                     <table
-                                                        style="width: 100%; margin-top: 80px; margin-bottom: 16px; background-color: black;"
+                                                        style="margin-top: 80px; margin-bottom: 16px;"
                                                         cellspacing="0" cellpadding="0">
                                                         <tr>
                                                             <td align="center">
