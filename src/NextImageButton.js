@@ -1,9 +1,9 @@
 import React from "react";
 import "./NextImageButton.css";
 
-export function NextImageButton({ imageIndex = 0, setImageIndex, style = {} }) {
+export function NextImageButton({ imageIndex = 0, setImageIndex, imagesLength, style = {} }) {
     const handleClick = () => {
-        const next = (imageIndex + 1) % 7;
+        const next = (imageIndex + 1) % imagesLength;
         setImageIndex(next);
     };
 
@@ -12,7 +12,6 @@ export function NextImageButton({ imageIndex = 0, setImageIndex, style = {} }) {
             onClick={handleClick}
             className="control-button"
             style={style}
-        >
-        </button>
+        />
     );
 }
