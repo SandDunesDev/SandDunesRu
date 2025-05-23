@@ -69,7 +69,7 @@ export default async function handler(req, res) {
                     bgcolor="#ffffff">
                     <!-- Header -->
                     <tr>
-                        <td style="padding:0;">
+                        <td style="padding:0; border-bottom: 1px solid black;">
                             <img src="${baseUrl}/images/header.png" alt="" width="100%"
                                 style="display:block;width:100%;height:auto;max-height:167px;margin:-10px 0;" />
                         </td>
@@ -144,7 +144,7 @@ export default async function handler(req, res) {
                                                         нашего логотипа — символа принятия и безусловной любви.
                                                     </p>
                                                     <a href="${downloadImageUrl}" target="_blank"
-                                                        style="display:block;font-family:'HelveticaNeue-CondensedBold','Helvetica Neue',sans-serif;font-weight:bold;font-size:16px;color:#181818;text-decoration:none;background-color:#FE95CD;background-image: url(${baseUrl}/images/story-button-background.png);text-transform:uppercase;padding:30px 0;margin:56px auto 0 auto;width:100%;text-align:center;">
+                                                        style="display:block;font-family:'HelveticaNeue-CondensedBold','Helvetica Neue',sans-serif;font-weight:bold;font-size:16px;color:#181818;text-decoration:none;background-color:white;background-image: url(${baseUrl}/images/story-button-background.png);text-transform:uppercase;padding:30px 0;margin:56px auto 0 auto;width:100%;text-align:center;">
                                                         Почему щенок?
                                                     </a>
                                                     <div style="height:80px;line-height:0;font-size:0;">&nbsp;</div>
@@ -192,7 +192,7 @@ export default async function handler(req, res) {
                                                                 border-right: 1px solid #8b8b8b;
                                                                 padding-right: 36px;
                                                                 ">privacy policy</a>
-                                                                <a href="[[unsubscribe_url]]" target="_blank" style="
+                                                                <a href="{{UnsubscribeUrl}}" target="_blank" style="
                                                                 display: inline-block;
                                                                 font-family: 'Helvetica Neue', sans-serif;
                                                                 font-size: 12px;
