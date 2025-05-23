@@ -61,195 +61,117 @@ export default async function handler(req, res) {
 
   // Build HTML body with two images
   const htmlBody = `
-        <table style="width: 100%">
-        <tr>
-            <td align="center">
-                <table
-                    style="width: 580px; font-family: Helvetica Neue, Helvetica, sans-serif; text-align: center; background-color: white; border: 2px solid black; margin: 10px"
-                    cellspacing="0" cellpadding="0" border="0">
-                    <tr>
-                        <td>
-                            <table style="width: 100%; background-color: white; border-bottom: 2px solid black;"
-                                cellspacing="0" cellpadding="0" border="0">
-                                <tr>
-                                    <td align="center">
-                                        <img src="${baseUrl}/images/header.png"
-                                            style="display: block; width: auto; height: 167px; margin-top: -10px; margin-bottom: -10px;" />
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center">
-                            <table style="width: 100%" cellspacing="0" cellpadding="0" border="0">
-                                <tr>
-                                    <td align="center">
-                                        <table style="width: 452px" cellspacing="0" cellpadding="0" border="0">
-                                            <tr>
-                                                <td align="center">
-                                                    <h2
-                                                        style="font-family: 'Helvetica Neue', Helvetica, sans-serif; color: black; font-size: 32px; margin-bottom: 0px; margin-top: 55px">
-                                                        Cеанс fashion–терапии скоро начнётся
-                                                    </h2>
-                                                    <p
-                                                        style="font-family: 'Helvetica Neue', Helvetica, sans-serif; color: black; font-size: 15px; margin-bottom: 0px; margin-top: 32px">
-                                                        В мире, где все хотят быть успешными, самое трудное — двигаться
-                                                        со своей
-                                                        скоростью. Все хотят быть уникальными, но самое страшное — стать
-                                                        обычным.
-                                                    </p>
-                                                    <p
-                                                        style="font-family: 'Helvetica Neue', Helvetica, sans-serif; color: black; font-size: 15px; margin-bottom: 0px; margin-top: 18px">
-                                                        Песчаные барханы — самое обычное явление пустыни. </br> Но
-                                                        каждый из них — с
-                                                        уникальным узором. Случайная комбинация миллионов песчинок, от
-                                                        которой
-                                                        невозможно оторвать взгляд.
-                                                    </p>
-                                                    <p
-                                                        style="font-family: 'Helvetica Neue', Helvetica, sans-serif; color: black; font-size: 15px; margin-bottom: 0px; margin-top: 18px">
-                                                        Прямо как от твоего тела.
-                                                    </p>
-                                                    <p
-                                                        style="font-family: 'Helvetica Neue', Helvetica, sans-serif; color: black; font-size: 15px; margin-bottom: 0px; margin-top: 18px">
-                                                        Выдохни. Украшай рутину. Полюби человека в зеркале.
-                                                    </p>
-                                                    <p
-                                                        style="font-family: 'Helvetica Neue', Helvetica, sans-serif; color: black; font-size: 15px; margin-bottom: 0px; margin-top: 18px">
-                                                        Летом выйдет первая коллекция Sand Dunes — бренда,
-                                                        вдохновлённого
-                                                        разнообразием и красотой обычных явлений природы. Эта открытка —
-                                                        твоё
-                                                        преимущество в 10% на первый сеанс эмоциональной
-                                                        fashion–терапии.
-                                                    </p>
-                                                    <img style="display:block; width:100%; max-width:453px; height:auto; margin:0; margin-top: 64px; box-shadow: 7px 7px 0 0 black;"
-                                                        src="${imageUrl}" alt="Card Image" />
-                                                    <a href="${downloadImageUrl}" target="_blank" style="
-                display: inline-block;
-                padding: 14px 22px;
-                font-family: 'HelveticaNeue-CondensedBold', 'Helvetica Neue', sans-serif;
-                font-weight: bold;
-                font-size: 16px;
-                color: white !important;
-                text-decoration: none;
-                background-color: #202020;
-                text-transform: uppercase;
-                margin-top: 24px;
-            ">
-                                                        Скачать
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                    </td>
-                                </tr>
-                            </table>
-                    </tr>
-                    <tr>
-                        <td>
-                            <table style="width: 100%; margin-top: 80px; background-color: black;" cellspacing="0"
-                                cellpadding="0" border="0">
-                                <tr>
-                                    <td align="center">
-                                        <table style="width: 452px; background-color: black;" cellspacing="0"
-                                            cellpadding="0" border="0">
-                                            <tr>
-                                                <td align="center">
-                                                    <img style="display: block; width: 94px; margin-top: 80px;"
-                                                        src="${baseUrl}/images/logo.png" />
-                                                    <p
-                                                        style="font-family: 'Helvetica Neue', Helvetica, sans-serif; color: white; font-size: 15px; margin-bottom: 0px; margin-top: 30px">
-                                                        Песчаные барханы — самое обычное явление пустыни. </br> Но
-                                                        каждый из них — с
-                                                        уникальным узором. Случайная комбинация миллионов песчинок, от
-                                                        которой
-                                                        невозможно оторвать взгляд.
-                                                    </p>
-                                                    <a href="${downloadImageUrl}" target="_blank" style="
-                                                    display: block;
-                                                    padding: 14px 22px;
-                                                    font-family: 'HelveticaNeue-CondensedBold', 'Helvetica Neue', sans-serif;
-                                                    font-weight: bold;
-                                                    font-size: 16px;
-                                                    color: #181818 !important;
-                                                    text-decoration: none;
-                                                    background-color: #FFB2DB;
-                                                    text-transform: uppercase;
-                                                    margin-top: 56px;
-                                                    padding: 30px 0;
-                                                    text-align: center;
-                                                ">Почему щенок?</a>
-                                                    <div style="width: 100%; height: 80px; background-color: black;">&nbsp;</div>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <table style="width: 100%; background-color: black; border-top: 1px solid white;"
-                                cellspacing="0" cellpadding="0" border="0">
-                                <tr>
-                                    <td align="center">
-                                        <table style="width: 452px; background-color: black;" cellspacing="0"
-                                            cellpadding="0" border="0">
-                                            <tr>
-                                                <td align="center">
-                                                    <div style="width: 100%; height: 80px; background-color: black;">&nbsp;</div>
-                                                    <a href="${downloadImageUrl}" target="_blank" style="
-                                                    display: block;
-                                                    font-family: 'Helvetica Neue', sans-serif;
-                                                    font-size: 12px;
-                                                    color: white !important;
-                                                    text-decoration: none;
-                                                    ">
-                                                        sanddunes.ru
-                                                    </a>
-                                                    <p
-                                                        style="font-family: 'Helvetica Neue', Helvetica, sans-serif; color: white; font-size: 12px; margin-bottom: 0px; margin-top: 4px">
-                                                        2025
-                                                    </p>
-                                                    <table
-                                                        style="margin-top: 80px; margin-bottom: 16px;"
-                                                        cellspacing="0" cellpadding="0">
-                                                        <tr>
-                                                            <td align="center">
-                                                                <a href="${downloadImageUrl}" target="_blank" style="
-                                                                display: inline-block;
-                                                                font-family: 'Helvetica Neue', sans-serif;
-                                                                font-size: 12px;
-                                                                color: #8b8b8b !important;
-                                                                text-decoration: none;
-                                                                border-right: 1px solid #8b8b8b;
-                                                                padding-right: 36px;
-                                                                ">privacy policy</a>
-                                                                <a href="${downloadImageUrl}" target="_blank" style="
-                                                                display: inline-block;
-                                                                font-family: 'Helvetica Neue', sans-serif;
-                                                                font-size: 12px;
-                                                                color: #8b8b8b !important;
-                                                                text-decoration: none;
-                                                                padding-left: 36px
-                                                                ">unsubscribe</a>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Рассылка</title>
+  <style type="text/css">
+    /* Переключение изображений header в зависимости от темы */
+    @media (prefers-color-scheme: dark) {
+      .header-light { display: none !important; }
+      .header-dark  { display: block !important; }
+    }
+    @media (prefers-color-scheme: light) {
+      .header-light { display: block !important; }
+      .header-dark  { display: none !important; }
+    }
+  </style>
+</head>
+<body style="margin:0;padding:0;background-color:#f2f2f2;">
+  <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" style="margin:0;padding:0;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0"
+               style="max-width:580px;width:100%;background-color:#ffffff;border:2px solid #000000;margin:10px auto;"
+               bgcolor="#ffffff">
+          <!-- Header (две версии) -->
+          <tr>
+            <td style="padding:0;">
+              <!-- Светлая тема -->
+              <img src="${baseUrl}/images/header-light.png"
+                   alt=""
+                   width="100%"
+                   class="header-light"
+                   style="display:block;width:100%;height:auto;max-height:167px;margin:-10px 0;" />
+              <!-- Тёмная тема -->
+              <img src="https://placecats.com/300/200"
+                   alt=""
+                   width="100%"
+                   class="header-dark"
+                   style="display:none;width:100%;height:auto;max-height:167px;margin:-10px 0;" />
             </td>
-        </tr>
-    </table>
+          </tr>
+
+          <!-- Контент -->
+          <tr>
+            <td align="center" style="padding:0 64px;">
+              <h2 style="font-family:'Helvetica Neue',Helvetica,sans-serif;font-size:32px;color:#000000;margin:55px 0 0 0;line-height:1.2;">Cеанс fashion–терапии скоро начнётся</h2>
+
+              <p style="font-family:'Helvetica Neue',Helvetica,sans-serif;font-size:15px;color:#000000;margin:32px 0 0 0;line-height:1.4;">В мире, где все хотят быть успешными, самое трудное — двигаться со своей скоростью. Все хотят быть уникальными, но самое страшное — стать обычным.</p>
+              <p style="font-family:'Helvetica Neue',Helvetica,sans-serif;font-size:15px;color:#000000;margin:18px 0 0 0;line-height:1.4;">Песчаные барханы — самое обычное явление пустыни.<br />Но каждый из них — с уникальным узором. Случайная комбинация миллионов песчинок, от которой невозможно оторвать взгляд.</p>
+              <p style="font-family:'Helvetica Neue',Helvetica,sans-serif;font-size:15px;color:#000000;margin:18px 0 0 0;line-height:1.4;">Прямо как от твоего тела.</p>
+              <p style="font-family:'Helvetica Neue',Helvetica,sans-serif;font-size:15px;color:#000000;margin:18px 0 0 0;line-height:1.4;">Выдохни. Украшай рутину. Полюби человека в зеркале.</p>
+              <p style="font-family:'Helvetica Neue',Helvetica,sans-serif;font-size:15px;color:#000000;margin:18px 0 0 0;line-height:1.4;">Летом выйдет первая коллекция Sand Dunes — бренда, вдохновлённого разнообразием и красотой обычных явлений природы. Эта открытка — твоё преимущество в 10% на первый сеанс эмоциональной fashion–терапии.</p>
+
+              <img src="${imageUrl}" alt="Card Image" style="display:block;width:100%;max-width:453px;height:auto;margin:64px auto 0 auto;box-shadow:7px 7px 0 0 #000000;" />
+
+              <a href="${downloadImageUrl}" target="_blank"
+                 style="display:inline-block;font-family:'HelveticaNeue-CondensedBold','Helvetica Neue',sans-serif;font-weight:bold;font-size:16px;color:#ffffff;text-decoration:none;background-color:#202020;text-transform:uppercase;padding:14px 22px;margin:24px auto 0 auto;">Скачать</a>
+            </td>
+          </tr>
+
+          <!-- Нижняя часть -->
+          <tr>
+            <td style="padding:0;">
+              <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0"
+                     style="background-color:#000000;margin-top:80px;"
+                     bgcolor="#000000">
+                <tr>
+                  <td align="center" style="padding:0 64px;">
+                    <img src="${baseUrl}/images/logo.png" alt="Logo" width="94" style="display:block;width:94px;height:auto;margin:80px auto 0 auto;" />
+                    <p style="font-family:'Helvetica Neue',Helvetica,sans-serif;font-size:15px;color:#ffffff;margin:30px 0 0 0;line-height:1.4;">Меня зовут Ив. Я креативный директор Sand Dunes. Если хочешь, приходи в телеграм-канал, расскажу тебе историю про создание нашего логотипа — символа принятия и безусловной любви.</p>
+                    <a href="${downloadImageUrl}" target="_blank"
+                       style="display:block;font-family:'HelveticaNeue-CondensedBold','Helvetica Neue',sans-serif;font-weight:bold;font-size:16px;color:#181818;text-decoration:none;background-color:#FFB2DB;text-transform:uppercase;padding:30px 0;margin:56px auto 0 auto;width:60%;max-width:200px;text-align:center;">Почему щенок?</a>
+                    <div style="height:80px;line-height:0;font-size:0;">&nbsp;</div>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Финальный футер -->
+          <tr>
+            <td style="padding:0;">
+              <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0"
+                     style="background-color:#000000;border-top:1px solid #ffffff;"
+                     bgcolor="#000000">
+                <tr>
+                  <td align="center" style="padding:0 64px;">
+                    <a href="https://sanddunes.ru" target="_blank"
+                       style="font-family:'Helvetica Neue',Helvetica,sans-serif;font-size:12px;color:#ffffff;text-decoration:none;margin:64px 0 4px 0;display:block;">sanddunes.ru</a>
+                    <p style="font-family:'Helvetica Neue',Helvetica,sans-serif;font-size:12px;color:#ffffff;margin:0;">2025</p>
+                    <p style="margin:32px 0 32px 0;font-size:0;line-height:0;">
+                      <a href="${downloadImageUrl}" target="_blank"
+                         style="font-family:'Helvetica Neue',sans-serif;font-size:12px;color:#8b8b8b;text-decoration:none;padding-right:36px;border-right:1px solid #8b8b8b;">privacy policy</a>
+                      <a href="${downloadImageUrl}" target="_blank"
+                         style="font-family:'Helvetica Neue',sans-serif;font-size:12px;color:#8b8b8b;text-decoration:none;padding-left:36px;">unsubscribe</a>
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+
+
+
   `;
 
   // Prepare parameters as form data
