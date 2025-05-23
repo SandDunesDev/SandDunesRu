@@ -23,44 +23,44 @@ import * as path from 'path';
 import { stripHash } from '../utils/strip-hash.mjs';
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    res.setHeader('Allow', 'POST');
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
+    if (req.method !== 'POST') {
+        res.setHeader('Allow', 'POST');
+        return res.status(405).json({ error: 'Method not allowed' });
+    }
 
-  const { email, selectedImageA, selectedImageB } = req.body;
-  if (!email || !selectedImageA || !selectedImageB) {
-    return res.status(400).json({ error: 'Request body must include `email`, `selectedImageA`, and `selectedImageB`.' });
-  }
+    const { email, selectedImageA, selectedImageB } = req.body;
+    if (!email || !selectedImageA || !selectedImageB) {
+        return res.status(400).json({ error: 'Request body must include `email`, `selectedImageA`, and `selectedImageB`.' });
+    }
 
-  const apiKey = process.env.UNISENDER_API_KEY;
-  const senderEmail = process.env.UNISENDER_SENDER_EMAIL;
-  const senderName = process.env.SENDER_NAME || 'Sand Dunes';
+    const apiKey = process.env.UNISENDER_API_KEY;
+    const senderEmail = process.env.UNISENDER_SENDER_EMAIL;
+    const senderName = process.env.SENDER_NAME || 'Sand Dunes';
 
-  // Validate essential configuration
-  if (!apiKey || !senderEmail) {
-    console.error('Missing UNISENDER_API_KEY or UNISENDER_SENDER_EMAIL environment variable.');
-    return res.status(500).json({ error: 'Server configuration error: missing API key or sender email.' });
-  }
+    // Validate essential configuration
+    if (!apiKey || !senderEmail) {
+        console.error('Missing UNISENDER_API_KEY or UNISENDER_SENDER_EMAIL environment variable.');
+        return res.status(500).json({ error: 'Server configuration error: missing API key or sender email.' });
+    }
 
-  const img1Name = stripHash(selectedImageA);
-  const img2Name = stripHash(selectedImageB);
-  const subject = 'Ваша открытка от нас';
-  const apiUrl = 'https://api.unisender.com/ru/api/sendEmail?format=json';
+    const img1Name = stripHash(selectedImageA);
+    const img2Name = stripHash(selectedImageB);
+    const subject = 'Ваша открытка от нас';
+    const apiUrl = 'https://api.unisender.com/ru/api/sendEmail?format=json';
 
-  // derive filename from input names (lowercased, without extension)
-  const baseName1 = path.basename(img1Name, path.extname(img1Name)).toLowerCase();
-  const baseName2 = path.basename(img2Name, path.extname(img2Name)).toLowerCase();
-  const filename = `${baseName1}-${baseName2}.png`;
+    // derive filename from input names (lowercased, without extension)
+    const baseName1 = path.basename(img1Name, path.extname(img1Name)).toLowerCase();
+    const baseName2 = path.basename(img2Name, path.extname(img2Name)).toLowerCase();
+    const filename = `${baseName1}-${baseName2}.png`;
 
-  // Construct publicly accessible URL to the image
-  const host = process.env.VERCEL_URL || 'sand-dunes-ru.vercel.app';
-  const baseUrl = `https://${host}`;
-  const imageUrl = `${baseUrl}/images/1x/combined/${filename}`;
-  const downloadImageUrl = `${baseUrl}/images/2x/combined/${filename}`;
+    // Construct publicly accessible URL to the image
+    const host = process.env.VERCEL_URL || 'sand-dunes-ru.vercel.app';
+    const baseUrl = `https://${host}`;
+    const imageUrl = `${baseUrl}/images/1x/combined/${filename}`;
+    const downloadImageUrl = `${baseUrl}/images/2x/combined/${filename}`;
 
-  // Build HTML body with two images
-  const htmlBody = `
+    // Build HTML body with two images
+    const htmlBody = `
     <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" style="margin:0;padding:0;">
         <tr>
             <td align="center">
@@ -217,35 +217,35 @@ export default async function handler(req, res) {
     </table>
   `;
 
-  // Prepare parameters as form data
-  // NOTE: The sendEmail endpoint does NOT accept `list_id`. Remove any `list_id` parameter to avoid invalid_arg errors.
-  const params = new URLSearchParams();
-  params.append('api_key', apiKey);
-  params.append('email', email);
-  params.append('sender_name', senderName);
-  params.append('sender_email', senderEmail);
-  params.append('subject', subject);
-  params.append('body', htmlBody);
-  params.append('lang', 'ru');
-  params.append('list_id', 1);
+    // Prepare parameters as form data
+    // NOTE: The sendEmail endpoint does NOT accept `list_id`. Remove any `list_id` parameter to avoid invalid_arg errors.
+    const params = new URLSearchParams();
+    params.append('api_key', apiKey);
+    params.append('email', email);
+    params.append('sender_name', senderName);
+    params.append('sender_email', senderEmail);
+    params.append('subject', subject);
+    params.append('body', htmlBody);
+    params.append('lang', 'ru');
+    params.append('list_id', 1);
 
-  try {
-    const response = await fetch(apiUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      body: params.toString()
-    });
+    try {
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: params.toString()
+        });
 
-    const result = await response.json();
-    if (result.result) {
-      return res.status(200).json({ message: 'Email sent successfully', result });
-    } else {
-      return res.status(500).json({ error: result.error, details: result });
+        const result = await response.json();
+        if (result.result) {
+            return res.status(200).json({ message: 'Email sent successfully', result });
+        } else {
+            return res.status(500).json({ error: result.error, details: result });
+        }
+    } catch (error) {
+        console.error('UniSender API error:', error);
+        return res.status(500).json({ error: error.message });
     }
-  } catch (error) {
-    console.error('UniSender API error:', error);
-    return res.status(500).json({ error: error.message });
-  }
 }
