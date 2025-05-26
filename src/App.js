@@ -64,8 +64,7 @@ function App() {
         }}>
           <div className="popUpWrapper">
             <div className="popUpContainer">
-              We have sent you some DuNes! <br />
-              Check your inbox
+              Открытка и&nbsp;11% на&nbsp;первый заказ отправлены на&nbsp;почту!
             </div>
             <button className="popUpButton" onClick={() => setShowPopup(false)}>
               <span className="popUpButtonImage" />
