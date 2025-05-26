@@ -9,9 +9,12 @@
   transition: transform 0.2s ease, opacity 0.2s ease;
   cursor: url('../src/cursorhover.png'), pointer;
   z-index: 10;
-  position: relative;
-  top: -20px
 
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
+  outline: none;
+  touch-action: manipulation;
 }
 
 .control-button:hover {
