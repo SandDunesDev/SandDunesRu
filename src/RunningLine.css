@@ -59,7 +59,6 @@
 
 .modal-date-fixed {
   text-align: left;
-  font-weight: 600;
   margin: 0 0 24px;
   flex-shrink: 0;
 }
@@ -97,9 +96,13 @@
 
 
 .modal-scrollable-text-content ul {
-  list-style-type: circle;   /* “○” */
+  list-style-type: circle;   
   margin: 0 0 0 24px;
   padding: 0;
+}
+
+.modal-scrollable-text-content p {
+  margin: 0 0 46px ; /* fuerza el margen */
 }
 
 .modal-scrollable-text-content ul ul {
