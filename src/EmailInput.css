@@ -1,6 +1,4 @@
-/* EmailInput.css */
 
-/* Estilos base del input y bloque de email */
 .email-input-wrapper {
   display: flex;
   align-items: center;
@@ -44,7 +42,6 @@
 .email-block {
   position: relative;
   width: 100%;
-  /* padding-bottom: 20px; Ya no es necesario aquí */
 }
 
 .divider {
@@ -83,7 +80,6 @@
   display: block;
   user-select: none;
   pointer-events: none;
-  /* Si tenías estilos para mover el spinner (ej. position:absolute), mantenlos si son necesarios */
 }
 
 @keyframes spin {
@@ -92,6 +88,3 @@
   }
 }
 
-/* Las clases relacionadas con el texto de privacidad (.privacy-consent-text, .privacy-link)
-   y todos los estilos del modal (.modal-overlay, .modal-content, etc.)
-   han sido movidos a RunningLine.css */
