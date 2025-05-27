@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { motion } from "framer-motion";
@@ -11,13 +10,12 @@ export default function RunningLine() {
   const originalTextContent =
     "crée une carte → assemble ou laisse le hasard faire ⚄ → reçois-la par e-mail  |  craft a postcard → match two columns or go random ⚄ → get your card emailed to you  |  как сделать открытку? → создай пару сам или доверься случайному выбору ⚄ → получи письмо с открыткой ";
 
-  const consentPart1 =
-    "(нажимая на кнопку «send» ты соглашаешься с нашей ";
+  const consentPart1 = "(нажимая на кнопку «send» ты соглашаешься с нашей ";
   const consentLinkText = "политикой конфиденциальности";
   const consentPart2 = ")";
   const mainSeparator = "\u00A0\u00A0\u00A0|\u00A0\u00A0\u00A0";
 
-  const measuredTextRef = useRef(null);      
+  const measuredTextRef = useRef(null);
   const [singlePhraseWidth, setSinglePhraseWidth] = useState(0);
   const [showModal, setShowModal] = useState(false);
 
@@ -93,7 +91,7 @@ export default function RunningLine() {
           <motion.div
             style={{
               display: "flex",
-              width: `calc(${singlePhraseWidth}px * 2)`, 
+              width: `calc(${singlePhraseWidth}px * 2)`,
             }}
             animate={{ x: [0, -singlePhraseWidth] }}
             transition={{
@@ -110,14 +108,8 @@ export default function RunningLine() {
 
       {showModal &&
         ReactDOM.createPortal(
-          <div
-            className="modal-overlay"
-            onClick={closeModal}
-          >
-            <div
-              className="modal-content"
-              onClick={(e) => e.stopPropagation()} 
-            >
+          <div className="modal-overlay" onClick={closeModal}>
+            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
               <button
                 className="modal-close"
                 onClick={closeModal}
@@ -126,28 +118,20 @@ export default function RunningLine() {
                 <img src={crossIcon} alt="Close" width={48} height={48} />
               </button>
 
-               
               <h2>Политика конфиденциальности</h2>
               <SimpleBar className="modal-scrollable-text-content">
-              <p className="modal-date-fixed">
-<<<<<<< HEAD
-                Дата последнего обновления: 18 апреля 2025 года
-=======
-                дата последнего обновления: 18 апреля 2025 года
->>>>>>> 12b5ee7 (changes in privacy modal)
-              </p>
-
-             
+                <p className="modal-date-fixed">
+                  {" "}
+                  Дата последнего обновления: 18 апреля 2025 года{" "}
+                </p>{" "}
                 <p>
-<<<<<<< HEAD
-                  Мы уважаем ваше право на конфиденциальность. Настоящая политика
-=======
-                  мы уважаем ваше право на конфиденциальность. Настоящая политика
->>>>>>> 12b5ee7 (changes in privacy modal)
-                  описывает, как бренд&nbsp;Sand&nbsp;Dunes&nbsp;(далее&nbsp;—
-                  «мы», «наш», «нас») обрабатывает и защищает персональные
-                  данные, которые вы предоставляете нам при использовании сайта
-                  sanddunes.ru и/или при подписке на нашу e-mail-рассылку.
+                  {" "}
+                  Мы уважаем ваше право на конфиденциальность. Настоящая
+                  политика описывает, как
+                  бренд&nbsp;Sand&nbsp;Dunes&nbsp;(далее&nbsp;— «мы», «наш»,
+                  «нас») обрабатывает и защищает персональные данные, которые вы
+                  предоставляете нам при использовании сайтаsanddunes.ru и/или
+                  при подписке на нашу e-mail-рассылку.
                 </p>
                 <ol>
                   <li>
@@ -163,7 +147,8 @@ export default function RunningLine() {
                         аналитику);
                       </li>
                       <li>
-                        Иные сведения, которые вы добровольно предоставляете нам.
+                        Иные сведения, которые вы добровольно предоставляете
+                        нам.
                       </li>
                     </ul>
                   </li>
@@ -175,9 +160,7 @@ export default function RunningLine() {
                         Отправки информационных и/или маркетинговых писем
                         (только с вашего согласия);
                       </li>
-                      <li>
-                        Улучшения качества наших сервисов и коммуникаций;
-                      </li>
+                      <li>Улучшения качества наших сервисов и коммуникаций;</li>
                       <li>
                         Обратной связи, если вы оставили запрос через форму.
                       </li>
@@ -230,11 +213,11 @@ export default function RunningLine() {
                     <strong>Ваши права.</strong> Вы имеете право:
                     <ul>
                       <li>Запросить доступ к вашим данным;</li>
-                      <li>Потребовать их исправления или удаления;</li>
+                      <li>Потребовать их исправления или удаления;</li>{" "}
                       <li>
+                        {" "}
                         Отозвать своё согласие на обработку в любой момент,
-                        направив запрос на нашу почту:
-                        love@sanddunes.ru.
+                        направив запрос на нашу почту: love@sanddunes.ru.
                       </li>
                     </ul>
                   </li>
