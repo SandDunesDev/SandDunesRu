@@ -15,11 +15,11 @@
 }
 
 .privacy-policy-link-cursor {
-  cursor: url("./cursorhover.png"), pointer;
-  position: relative;
-  display: inline-block;
-  user-select: none;
-  padding: 2px 0;
+  cursor: url("./cursorhover.png") 4 4, pointer; 
+  display: inline;           
+  line-height: inherit;       
+  padding: 0;                 
+  user-select: none;         
 }
 
 .modal-overlay {
@@ -68,36 +68,33 @@
 }
 
 .modal-close {
-  position: absolute;
-  top: 8px;
-  left: 700px;            
-  border: none;
-  padding: 0;
-  width: 48px;            
+  width: 48px;
   height: 48px;
-  background-color: transparent;
-  display: flex;
+  background: transparent;
+  border: none;
+  display: flex; 
   align-items: center;
   justify-content: center;
-  box-sizing: border-box;
-  user-select: none;
-  pointer-events: auto;
   cursor: url("./cursorhover.png"), pointer;
+
+  margin-left: auto;   
+  margin-top: 16px;     
+  margin-right: 16px;   
+  order: -1;           
 }
 
 .modal-close img {
   display: block;
   width: 48px;
   height: 48px;
-  user-select: none;
-  pointer-events: none;
 }
 
-.modal-scrollable-text-content {
-  flex: 1 1 auto;   
-  min-height: 0;    
+.modal-scrollable-text-content{
+  flex:1 1 auto;           
+  min-height:0;            
 }
 
+<<<<<<< HEAD
 
 .modal-scrollable-text-content ul {
 <<<<<<< HEAD
@@ -119,20 +116,26 @@
 .modal-scrollable-text-content ul ul {
   list-style-type: circle;
   margin-left: 24px;
+=======
+.modal-scrollable-text-content .simplebar-content{
+  box-sizing:border-box;
+  padding-inline:20px !important;
 }
 
-.modal-scrollable-text-content li {
-  margin: 4px 0;
-  line-height: 1.5;
+.modal-scrollable-text-content p{margin:0 0 16px;}
+.modal-scrollable-text-content ul{
+  list-style-type:circle;
+  margin:0 0 0 24px;
+  padding:0;
 }
-
-
-.modal-scrollable-text-content a,
-.modal-scrollable-text-content a:visited {
-  color: inherit;
-  text-decoration: underline;
+.modal-scrollable-text-content ul ul{
+  margin-left:24px;
+>>>>>>> 4cb3482 (adjustments in modal)
 }
-
+.modal-scrollable-text-content li{
+  margin:4px 0;
+  line-height:1.5;
+}
 .modal-content a,
 .modal-content button {
   cursor: url("./cursorhover.png"), pointer;
@@ -169,4 +172,15 @@
   background: #333333 !important;
   opacity: 1 !important;
   border-radius: 3px !important;
+}
+
+@media(max-width:799px){
+  .modal-content{
+    width:min(640px,90vw);   
+    max-height:100vh;
+    padding:24px;           
+  }
+  .modal-scrollable-text-content .simplebar-content{
+    padding-inline:16px !important;  
+  }
 }
