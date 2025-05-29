@@ -1,9 +1,8 @@
+
 .email-input-wrapper {
   display: flex;
   align-items: center;
   border: 2px solid #fff;
-  border-radius: 0;
-  overflow: hidden;
   background-color: #2e2e2e;
   height: 48px;
   width: 100%;
@@ -20,7 +19,7 @@
   font-weight: 400;
   color: #999999;
   transition: color 0.3s ease;
-  width: 100%npm;
+  width: 100%;
 }
 
 .email-input:focus {
@@ -33,11 +32,16 @@
 }
 
 .email-input.error {
-  color: #FF6161;
+  color: #ff6161;
 }
 
 .email-input.error::placeholder {
-  color: #FF6161;
+  color: #ff6161;
+}
+
+.email-block {
+  position: relative;
+  width: 100%;
 }
 
 .divider {
@@ -55,14 +59,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: url('../src/cursorhover.png'), pointer;
+  cursor: url("./cursorhover.png"), pointer;
+  position: relative; 
 }
-
-/*
-.send-button.loading {
-  cursor: wait;
-}
-*/
 
 .button-image {
   width: 100%;
@@ -71,8 +70,6 @@
   display: block;
   user-select: none;
   pointer-events: none;
-  fill: none;
-  stroke: none;
 }
 
 .spinner {
@@ -90,3 +87,4 @@
     transform: rotate(360deg);
   }
 }
+

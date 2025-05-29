@@ -1,0 +1,158 @@
+
+.running-line-container {
+  overflow: hidden;
+  border: 2px solid #222222;
+  padding: 14px 20px;
+  margin: 20px 20px 0 20px;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  font-family: "Roboto Mono", monospace;
+  font-size: 12px;
+  color: #000000;
+  line-height: 1.5;
+  position: relative;
+  will-change: auto;
+}
+
+.privacy-policy-link-cursor {
+  cursor: url("./cursorhover.png"), pointer;
+  position: relative;
+  display: inline-block;
+  user-select: none;
+  padding: 2px 0;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(2px);
+  z-index: 9999;
+}
+
+.modal-content {
+  position: relative;
+  width: 720px;
+  max-width: 90vw;
+  max-height: 85vh;
+  padding: 48px 56px;
+  background: #ffffff;
+  border: 1.5px solid #000000;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  color: #000000;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content h2 {
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 64px; 
+  flex-shrink: 0;
+}
+
+.modal-date-fixed {
+  text-align: left;
+  font-weight: 600;
+  margin: 0 0 24px;
+  flex-shrink: 0;
+}
+
+.modal-close {
+  position: absolute;
+  top: 8px;
+  left: 700px;            
+  border: none;
+  padding: 0;
+  width: 48px;            
+  height: 48px;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  user-select: none;
+  pointer-events: auto;
+  cursor: url("./cursorhover.png"), pointer;
+}
+
+.modal-close img {
+  display: block;
+  width: 48px;
+  height: 48px;
+  user-select: none;
+  pointer-events: none;
+}
+
+.modal-scrollable-text-content {
+  flex: 1 1 auto;   
+  min-height: 0;    
+}
+
+
+.modal-scrollable-text-content ul {
+  list-style-type: circle;   /* “○” */
+  margin: 0 0 0 24px;
+  padding: 0;
+}
+
+.modal-scrollable-text-content ul ul {
+  list-style-type: circle;
+  margin-left: 24px;
+}
+
+.modal-scrollable-text-content li {
+  margin: 4px 0;
+  line-height: 1.5;
+}
+
+
+.modal-scrollable-text-content a,
+.modal-scrollable-text-content a:visited {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.modal-content a,
+.modal-content button {
+  cursor: url("./cursorhover.png"), pointer;
+  position: relative;
+  user-select: none;
+}
+
+.modal-scrollable-text-content .simplebar-content {
+  padding-right: 20px !important; 
+}
+
+.simplebar-track.simplebar-vertical {
+  right: 0 !important;
+  width: 6px !important;
+  background: transparent !important;
+}
+
+.simplebar-scrollbar.simplebar-vertical::before {
+  left: 2px !important;
+  right: 2px !important;
+  background: #333333 !important;
+  opacity: 1 !important;
+  border-radius: 3px !important;
+}
+
+.simplebar-track.simplebar-horizontal {
+  height: 6px !important;
+  background: transparent !important;
+}
+
+.simplebar-scrollbar.simplebar-horizontal::before {
+  top: 2px !important;
+  bottom: 2px !important;
+  background: #333333 !important;
+  opacity: 1 !important;
+  border-radius: 3px !important;
+}
