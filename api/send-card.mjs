@@ -83,7 +83,7 @@ export default async function handler(req, res) {
                                 <tr>
                                     <td align="center" style="padding:0;">
                                         <h2
-                                            style="font-family:'Helvetica Neue Condensed',Helvetica,sans-serif;font-size:32px;color:#000000;margin:55px 0 0 0;line-height:30px;">
+                                            style="font-family:'HelveticaNeue-CondensedBold',Helvetica,sans-serif;font-size:32px;color:#000000;margin:55px 0 0 0;line-height:30px;">
                                             Cеанс fashion–терапии скоро начнётся
                                         </h2>
                                         <p
