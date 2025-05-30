@@ -2,14 +2,12 @@
 .running-line-container {
   overflow: hidden;
   border: 2px solid #222222;
-  padding: 14px 20px;
   margin: 20px 20px 0 20px;
   background-color: #ffffff;
   box-sizing: border-box;
   font-family: "Roboto Mono", monospace;
   font-size: 12px;
   color: #000000;
-  line-height: 1.5;
   position: relative;
   will-change: auto;
 }
@@ -17,9 +15,9 @@
 .privacy-policy-link-cursor {
   cursor: url("./cursorhover.png"), pointer;
   position: relative;
+  padding: 14px 0 14px;
   display: inline-block;
   user-select: none;
-  padding: 2px 0;
 }
 
 .modal-overlay {
@@ -29,18 +27,17 @@
   place-items: center;
   background: rgba(0, 0, 0, 0.65);
   backdrop-filter: blur(2px);
-  z-index: 9999;
+  z-index: 9999; /* z-index alto para la superposición */
 }
 
 .modal-content {
-  position: relative;
-  width: 720px;
-  max-width: 90vw;
-  max-height: 85vh;
-  padding: 48px 56px;
+  position: relative; /* Necesario para posicionar .modal-close absolutamente dentro */
+  width: 720px; /* Ancho para escritorio */
+  max-width: 90vw; /* Límite de ancho para que no sea demasiado grande en pantallas intermedias */
+  max-height: 85vh; /* Altura máxima para escritorio */
+  padding: 48px 56px ; /* Padding para escritorio */
   background: #ffffff;
   border: 1.5px solid #000000;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
   font-family: Inter, sans-serif;
   font-size: 14px;
   line-height: 1.45;
@@ -52,8 +49,8 @@
 .modal-content h2 {
   font-size: 28px;
   font-weight: 700;
-  text-align: center;
-  margin: 0 0 64px; 
+  text-align: center; /* Título centrado */
+  margin: 0 0 64px; /* Margen para escritorio. Se sobrescribirá en móvil. */
   flex-shrink: 0;
 }
 
@@ -65,14 +62,21 @@
 }
 
 .modal-close {
+  /* NOTA: El 'width: min(720px,90vw);' inicial es redundante y se sobrescribe por 'width: 48px;' más abajo.
+     Se podría limpiar, pero no causa problemas. */
+  /* width: min(720px,90vw); */
   position: absolute;
+  /* Estilos para escritorio (top/left). Se sobrescribirán en móvil. */
   top: 8px;
-  left: 700px;            
+  /* La propiedad 'left: 700px;' para escritorio en un modal de 720px de ancho
+     haría que el botón se salga o quede muy al borde.
+     Considera usar 'right' para escritorio también para consistencia, ej: right: 24px; */
+  left: 700px;
   border: none;
   padding: 0;
-  width: 48px;            
+  width: 48px;
   height: 48px;
-  background-color: transparent;
+  background-color: transparent; /* Fondo por defecto del botón de cierre */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -80,6 +84,9 @@
   user-select: none;
   pointer-events: auto;
   cursor: url("./cursorhover.png"), pointer;
+  /* z-index se definirá específicamente para móvil si es necesario,
+     pero generalmente es buena idea tenerlo aquí también si hay problemas de solapamiento en desktop.
+     ej. z-index: 10; */
 }
 
 .modal-close img {
@@ -90,14 +97,13 @@
   pointer-events: none;
 }
 
-.modal-scrollable-text-content {
-  flex: 1 1 auto;   
-  min-height: 0;    
+.modal-scrollable-text-content { /* Contenedor de SimpleBar */
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
-
 .modal-scrollable-text-content ul {
-  list-style-type: circle;   /* “○” */
+  list-style-type: circle;
   margin: 0 0 0 24px;
   padding: 0;
 }
@@ -112,47 +118,121 @@
   line-height: 1.5;
 }
 
-
 .modal-scrollable-text-content a,
 .modal-scrollable-text-content a:visited {
   color: inherit;
   text-decoration: underline;
 }
 
+/* ESTILO GLOBAL PARA ENLACES Y BOTONES DENTRO DEL MODAL: */
+/* Esta regla es bastante específica y afectará a TODOS los 'a' y 'button' dentro de .modal-content.
+   Esto incluye el .modal-close si es un <button>.
+   El background-color: #333333; hará que el .modal-close tenga fondo oscuro,
+   lo cual puede ayudar a la visibilidad si tu icono SVG es claro.
+   El padding-top: 5px; también se aplicará. */
 .modal-content a,
 .modal-content button {
   cursor: url("./cursorhover.png"), pointer;
   position: relative;
+  display: inline-block;
   user-select: none;
+  padding-top: 5px;
 }
 
 .modal-scrollable-text-content .simplebar-content {
-  padding-right: 20px !important; 
+  padding-right: 20px; /* Padding derecho para el contenido con scroll en ESCRITORIO */
 }
 
+/* Estilos de SimpleBar */
 .simplebar-track.simplebar-vertical {
-  right: 0 !important;
-  width: 6px !important;
-  background: transparent !important;
+  right: 0;
+  width: 6px;
+  background: transparent;
 }
 
 .simplebar-scrollbar.simplebar-vertical::before {
-  left: 2px !important;
-  right: 2px !important;
-  background: #333333 !important;
-  opacity: 1 !important;
-  border-radius: 3px !important;
+  left: 2px;
+  right: 2px;
+  background: #333333;
+  opacity: 1;
+  border-radius: 3px;
 }
 
 .simplebar-track.simplebar-horizontal {
-  height: 6px !important;
-  background: transparent !important;
+  height: 6px;
+  background: transparent;
 }
 
 .simplebar-scrollbar.simplebar-horizontal::before {
-  top: 2px !important;
-  bottom: 2px !important;
-  background: #333333 !important;
-  opacity: 1 !important;
-  border-radius: 3px !important;
+  top: 2px;
+  bottom: 2px;
+  background: #333333;
+  opacity: 1;
+  border-radius: 3px;
+}
+
+/* ============================================ */
+/* ========== ESTILOS PARA MÓVILES ========== */
+/* ============================================ */
+@media (max-width: 799px) {
+  .modal-content {
+    width: min(640px, 90vw);
+    height: auto;
+    max-height: 95vh;
+    padding: 24px;
+    display: flex; /* Asegúrate de que sigue siendo flex container si es necesario */
+    flex-direction: column; /* Asegúrate de que sigue siendo flex container si es necesario */
+    position: relative; /* MUY IMPORTANTE para .modal-close */
+  }
+
+  .modal-content h2 {
+    margin-top: 24px;
+    margin-bottom: 32px;
+    font-size: 28px; /* Asegúrate que estos valores son los deseados */
+    font-weight: 700;
+    text-align: center;
+  }
+
+  /* Botón de cierre en móviles - ESTRATEGIA DE VISIBILIDAD FORZADA */
+  .modal-close {
+    /* --- Estilos Forzados para Depuración --- */
+    display: flex !important;         /* Asegúrate que se muestra y es flex container */
+    align-items: center !important;   /* Centra el contenido (la imagen SVG) verticalmente */
+    justify-content: center !important;/* Centra el contenido (la imagen SVG) horizontalmente */
+    position: absolute !important;    /* Posicionamiento absoluto respecto a .modal-content */
+    width: 50px !important;           /* Un tamaño fijo y visible */
+    height: 50px !important;          /* Un tamaño fijo y visible */
+    top: 15px !important;             /* Posición desde arriba (ajusta después) */
+    right: 15px !important;            /* Posición desde la derecha (ajusta después) */
+    left: auto !important;            /* Anula cualquier 'left' heredado */
+    bottom: auto !important;          /* Anula cualquier 'bottom' heredado */
+
+    background-color: limegreen !important; /* Fondo verde brillante MUY visible */
+    border: 2px solid red !important;       /* Borde rojo MUY visible */
+    z-index: 100 !important;          /* z-index alto para estar sobre otros elementos en .modal-content */
+    
+    padding: 0 !important;            /* Sin padding interno que pueda afectar al tamaño del icono */
+    margin: 0 !important;             /* Sin márgenes externos */
+    opacity: 1 !important;            /* Totalmente opaco */
+    visibility: visible !important;   /* Totalmente visible */
+    transform: none !important;       /* Sin transformaciones que puedan ocultarlo o moverlo */
+    cursor: pointer !important;       /* Cursor de puntero */
+    overflow: hidden !important;      /* Si el contenido se desborda, se oculta (para el área del botón) */
+  }
+
+  .modal-close img {
+    display: block !important;
+    width: 100% !important;     /* La imagen SVG debe ocupar todo el botón */
+    height: 100% !important;    /* La imagen SVG debe ocupar todo el botón */
+    object-fit: contain !important; /* Para que el SVG escale bien dentro del botón */
+  }
+
+  /* Contenido de texto con scroll en móviles */
+  .modal-scrollable-text-content .simplebar-content {
+    padding-inline: 16px; /* Padding izquierdo Y derecho. AJUSTA '16px' según necesites. */
+    /* O usa padding-left y padding-right individualmente:
+    padding-left: 16px;
+    padding-right: 16px; // AJUSTA este valor para el margen/padding derecho del texto.
+    */
+  }
 }
