@@ -35,7 +35,7 @@ function App() {
 
   useEffect(() => {
     let loaded = 0;
-    const minDuration = 3000;
+    const minDuration = 1500;
     const start = Date.now();
 
     const finish = () => {
@@ -55,9 +55,7 @@ function App() {
     });
   }, []);
   
-  // ← se ejecuta una única vez al montar
 
-  /* ───── Resto de tu código permanece igual ───── */
   const [selectedImageA, setSelectedImageA] = useState("");
   const [selectedImageB, setSelectedImageB] = useState("");
   const [showPopup, setShowPopup] = useState(false);
@@ -75,9 +73,9 @@ console.log("ready", ready);
 
   return (
   <>
-    <LoadingScreen visible={!ready} />   {/* NUEVO */}
+    <LoadingScreen visible={!ready} />   
 
-    {/* resto de tu aplicación ↓↓↓ */}
+ 
     <div style={{ position:"relative",
         display: "flex",
         flexDirection: "column",
@@ -86,7 +84,7 @@ console.log("ready", ready);
         height: "calc(var(--vh, 1vh) * 100)",
         backgroundColor: "#fff",
       }}>
-        {/* …tu JSX existente sin cambios… */}
+      
         <div style={{ position: "fixed", top: 0, left: 0, width: "100%", zIndex: 10 }}>
           <RunningLine />
         </div>

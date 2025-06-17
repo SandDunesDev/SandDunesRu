@@ -1,9 +1,4 @@
-/* Sólo reglas del loader.  
-   Las directivas @tailwind deben estar en tu hoja global (p. ej. src/index.css) */
 
-/* ------------------------------------------------------------------ */
-/*  Overlay de pantalla completa                                       */
-/* ------------------------------------------------------------------ */
 .loading-overlay {
   position: fixed;
   inset: 0;
@@ -13,18 +8,15 @@
   background-color: #2f2f2f;
   z-index: 9999;
   pointer-events: none;
-  /* transición de aparición / desaparición */
+
   opacity: 0;
   transition: opacity 0.6s ease;
 }
 
-/* Estados controlados desde React */
+
 .loading-overlay.is-visible { opacity: 1; }
 .loading-overlay.is-hidden  { opacity: 0; }
 
-/* ------------------------------------------------------------------ */
-/*  Animación continua del logo                                        */
-/* ------------------------------------------------------------------ */
 @keyframes pulseLogo {
   0%, 100% {
     opacity: 0.2;
@@ -37,7 +29,7 @@
 }
 
 .loading-logo {
-  width: 165.83px;   /* medidas exactas de Figma */
+  width: 165.83px;   
   height: auto;
   animation: pulseLogo 1.6s ease-in-out infinite;
   pointer-events: none;

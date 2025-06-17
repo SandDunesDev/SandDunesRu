@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import "./LoadingScreen.css";           // importa los estilos del loader
+import "./LoadingScreen.css";           
 
 export default function LoadingScreen({ visible }) {
   const [render, setRender] = useState(visible);
 
-  /* Mantiene el nodo montado mientras `visible` sea true y
-     lo desmonta 600 ms después para que termine la transición */
+  
   useEffect(() => {
     if (visible) {
       setRender(true);
