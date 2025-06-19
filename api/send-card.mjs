@@ -109,7 +109,7 @@ export default async function handler(req, res) {
                                             style="font-family:'Helvetica Neue',Helvetica,sans-serif;font-size:15px;color:#000000;margin:18px 0 0 0;line-height:20px;">
                                             Летом выйдет первая коллекция Sand Dunes — бренда, вдохновлённого
                                             разнообразием и красотой обычных явлений природы. Эта открытка — твоё
-                                            преимущество в 10% на первый сеанс эмоциональной fashion–терапии.
+                                            преимущество в 11% на первый сеанс эмоциональной fashion–терапии.
                                         </p>
                                         <img src="${imageUrl}" alt="Card Image"
                                             style="display:block;width:100%;max-width:453px;height:auto;margin:64px auto 0 auto;box-shadow:7px 7px 0 0 #000000;" />
@@ -143,7 +143,7 @@ export default async function handler(req, res) {
                                                         приходи в телеграм-канал, расскажу тебе историю про создание
                                                         нашего логотипа — символа принятия и безусловной любви.
                                                     </p>
-                                                    <a href="${downloadImageUrl}" target="_blank"
+                                                    <a href="https://cutt.ly/sanddunestg" target="_blank"
                                                         style="display:block;font-family:'HelveticaNeue-CondensedBold','Helvetica Neue',sans-serif;font-weight:bold;font-size:16px;color:#181818;text-decoration:none;background-color:white;text-transform:uppercase;padding:30px 0;margin:56px auto 0 auto;width:100%;text-align:center;">
                                                         Почему щенок?
                                                     </a>
@@ -171,7 +171,7 @@ export default async function handler(req, res) {
                                                 <td align="center" style="padding:0;">
                                                     <a href="https://sanddunes.ru" target="_blank"
                                                         style="font-family:'Helvetica Neue',Helvetica,sans-serif;font-size:12px;color:#ffffff;text-decoration:none;display:block;margin:64px 0 4px 0;">
-                                                        sanddunes.ru
+                                                        lovesanddunes.com
                                                     </a>
                                                     <p
                                                         style="font-family:'Helvetica Neue',Helvetica,sans-serif;font-size:12px;color:#ffffff;margin:0;">
