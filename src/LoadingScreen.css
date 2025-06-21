@@ -29,7 +29,7 @@
 }
 
 .loading-logo {
-  width: 165.83px;   
+  width: 132px;   
   height: auto;
   animation: pulseLogo 1.6s ease-in-out infinite;
   pointer-events: none;
