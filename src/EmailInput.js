@@ -1,13 +1,10 @@
-// src/components/EmailInput.jsx
 import React, { useState } from "react";
 import "./EmailInput.css";
 
-// Iconos del botón (estados normal, hover y clicked)
 import btnDefault from "./ButtonDefault.svg";
 import btnFocused from "./ButtonFocused.svg";
 import btnClicked from "./ButtonClicked.svg";
 
-// SVG inline para evitar retrasos de carga
 import spinnerPng from "./spinner.png";  
 
 export default function EmailInput({ selectedImageA, selectedImageB, onSuccess }) {

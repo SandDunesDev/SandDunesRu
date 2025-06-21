@@ -1,4 +1,3 @@
-/* src/components/EmailInput.css */
 
 .email-input-wrapper {
   display: flex;
@@ -78,14 +77,14 @@
   animation: spin 2s linear infinite;
 }
 
-/* src/components/EmailInput.css */
+
 .spinner {
   width: 48px;
   height: 48px;
   animation: spin 2s linear infinite;
   user-select: none;
   pointer-events: none;
-  /* transform-origin ya es 'center center' por defecto en un <img> */
+  
 }
 
 @keyframes spin {
