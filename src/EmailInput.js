@@ -9,7 +9,7 @@ import spinnerPng from "./spinner.png";
 
 export default function EmailInput({ selectedImageA, selectedImageB, onSuccess }) {
   const [email, setEmail] = useState("");
-  const [isFocused, setIsFocused] = useState(false);
+  const [setIsFocused] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [loading, setLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
