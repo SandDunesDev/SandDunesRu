@@ -19,7 +19,6 @@
   font-weight: 400;
   color: #999999;
   transition: color 0.3s ease;
-  width: 100%;
 }
 
 .email-input:focus {
@@ -60,31 +59,34 @@
   align-items: center;
   justify-content: center;
   cursor: url("./cursorhover.png"), pointer;
-  position: relative; 
 }
 
 .button-image {
   width: 100%;
   height: 48px;
   object-fit: cover;
-  display: block;
   user-select: none;
   pointer-events: none;
 }
+.spinner-wrapper {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: spin 2s linear infinite;
+}
+
 
 .spinner {
   width: 48px;
   height: 48px;
   animation: spin 2s linear infinite;
-  object-fit: cover;
-  display: block;
   user-select: none;
   pointer-events: none;
+  
 }
 
 @keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+  to { transform: rotate(360deg); }
 }
-
